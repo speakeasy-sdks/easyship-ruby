@@ -1,10 +1,8 @@
-# Error
-
-Error
+# OrganizationListMeta
 
 
 ## Fields
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `error`                                                            | [T.nilable(Shared::ErrorError)](../../models/shared/errorerror.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `pagination`                                                       | [T.nilable(Shared::Pagination)](../../models/shared/pagination.md) | :heavy_minus_sign:                                                 | Pagination                                                         |

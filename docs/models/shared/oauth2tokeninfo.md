@@ -1,0 +1,14 @@
+# OAuth2TokenInfo
+
+OAuth 2 Token Info
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `application`                                                                                      | [T.nilable(Shared::OAuth2TokenInfoApplication)](../../models/shared/oauth2tokeninfoapplication.md) | :heavy_minus_sign:                                                                                 | OAuth 2 Client Application                                                                         |
+| `created_at`                                                                                       | *T.nilable(Integer)*                                                                               | :heavy_minus_sign:                                                                                 | OAuth 2 Access Token Creation Time                                                                 |
+| `expires_in`                                                                                       | *T.nilable(Integer)*                                                                               | :heavy_minus_sign:                                                                                 | OAuth 2 Access Token Expiration Time in Seconds                                                    |
+| `resource_owner_id`                                                                                | *T.nilable(String)*                                                                                | :heavy_minus_sign:                                                                                 | OAuth 2 Resource Owner ID. Always `null` when using `client_credentials` grant type.               |
+| `scope`                                                                                            | T::Array<*String*>                                                                                 | :heavy_minus_sign:                                                                                 | OAuth 2 Scopes                                                                                     |
