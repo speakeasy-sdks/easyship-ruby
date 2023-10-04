@@ -1,20 +1,24 @@
 <!-- Start SDK Example Usage -->
 
 
-```python
-import speakeasybar
-from speakeasybar.models import operations, shared
+```ruby
+require_relative easyship
 
-s = speakeasybar.Speakeasybar(
-    security=shared.Security(
-        api_key="",
-    ),
+
+s = OpenApiSDK::Easyship.new
+
+   
+req = Shared::OAuth2IntrospectRequest.new(
+  request=Shared::OAuth2IntrospectRequest.new(
+    token="Intranet",
+  ),
 )
+    
+res = s.auth.introspect(req)
 
+if ! res.o_auth2_introspect_response.nil?
+  # handle response
+end
 
-res = s.drinks.list_drinks(drink_type=shared.DrinkType.WINE)
-
-if res.drinks is not None:
-    # handle response
 ```
 <!-- End SDK Example Usage -->
