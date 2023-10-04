@@ -8,10 +8,10 @@ require 'faraday'
 require_relative '../shared/organizationupdate'
 require_relative '../shared/organization_single'
 
-module OpenApiSDK
+module Easyship
   module Operations
 
-    class UpdateOrganizationsRequest < OpenApiSDK::Utils::FieldAugmented
+    class UpdateOrganizationsRequest < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Organization ID provided when creating the organization
@@ -28,7 +28,7 @@ module OpenApiSDK
     end
 
 
-    class UpdateOrganizationsResponse < OpenApiSDK::Utils::FieldAugmented
+    class UpdateOrganizationsResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

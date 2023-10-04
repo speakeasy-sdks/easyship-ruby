@@ -8,10 +8,10 @@ require 'faraday'
 require_relative '../shared/countryalpha2'
 require_relative '../shared/companyusercreate'
 
-module OpenApiSDK
+module Easyship
   module Shared
 
-    class CompanyCreate < OpenApiSDK::Utils::FieldAugmented
+    class CompanyCreate < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Country Code in Alpha-2 format (ISO 3166-1)

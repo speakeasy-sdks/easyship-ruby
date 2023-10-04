@@ -8,7 +8,7 @@ require 'sorbet-runtime'
 require 'base64'
 require_relative './metadata_fields'
 
-module OpenApiSDK
+module Easyship
   module Utils
     extend T::Sig
 

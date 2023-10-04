@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # Pagination
-    class Pagination < OpenApiSDK::Utils::FieldAugmented
+    class Pagination < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # The total number of items. The `null` value is used with countless pagination (used for faster response on large datasets, like shipments).

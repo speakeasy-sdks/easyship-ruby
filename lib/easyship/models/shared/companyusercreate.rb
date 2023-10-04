@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
 
-    class CompanyUserCreate < OpenApiSDK::Utils::FieldAugmented
+    class CompanyUserCreate < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Email address

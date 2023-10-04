@@ -6,7 +6,7 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # GrantType - OAuth 2 Grant Type
     class GrantType < T::Enum

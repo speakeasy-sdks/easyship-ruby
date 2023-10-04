@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/oauth2introspectresponse'
 
-module OpenApiSDK
+module Easyship
   module Operations
 
-    class IntrospectTokenResponse < OpenApiSDK::Utils::FieldAugmented
+    class IntrospectTokenResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

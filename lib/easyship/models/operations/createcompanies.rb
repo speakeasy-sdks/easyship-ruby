@@ -8,10 +8,10 @@ require 'faraday'
 require_relative '../shared/error'
 require_relative '../shared/company_single'
 
-module OpenApiSDK
+module Easyship
   module Operations
 
-    class CreateCompaniesResponse < OpenApiSDK::Utils::FieldAugmented
+    class CreateCompaniesResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

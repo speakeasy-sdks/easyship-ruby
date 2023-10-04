@@ -8,10 +8,10 @@ require 'faraday'
 require_relative '../shared/error'
 require_relative '../shared/success'
 
-module OpenApiSDK
+module Easyship
   module Operations
 
-    class DeleteOrganizationsRequest < OpenApiSDK::Utils::FieldAugmented
+    class DeleteOrganizationsRequest < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Organization ID provided when creating the organization
@@ -25,7 +25,7 @@ module OpenApiSDK
     end
 
 
-    class DeleteOrganizationsResponse < OpenApiSDK::Utils::FieldAugmented
+    class DeleteOrganizationsResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

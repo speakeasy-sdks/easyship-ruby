@@ -6,7 +6,7 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # ErrorErrorType - The type of error returned.
     class ErrorErrorType < T::Enum
@@ -18,7 +18,7 @@ module OpenApiSDK
 
 
 
-    class ErrorError < OpenApiSDK::Utils::FieldAugmented
+    class ErrorError < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # A short code that represents the error.
@@ -44,7 +44,7 @@ module OpenApiSDK
     end
 
     # Error
-    class Error < OpenApiSDK::Utils::FieldAugmented
+    class Error < Easyship::Utils::FieldAugmented
       extend T::Sig
 
 

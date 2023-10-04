@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # OAuth 2 Introspect Request
-    class OAuth2IntrospectRequest < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2IntrospectRequest < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Access Token

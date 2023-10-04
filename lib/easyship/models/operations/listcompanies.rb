@@ -7,7 +7,7 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/company_list'
 
-module OpenApiSDK
+module Easyship
   module Operations
     # ListCompaniesSortBy - Sort records by listed columns. Default: `created_at`
     class ListCompaniesSortBy < T::Enum
@@ -28,7 +28,7 @@ module OpenApiSDK
 
 
 
-    class ListCompaniesRequest < OpenApiSDK::Utils::FieldAugmented
+    class ListCompaniesRequest < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Filter by company name
@@ -57,7 +57,7 @@ module OpenApiSDK
     end
 
 
-    class ListCompaniesResponse < OpenApiSDK::Utils::FieldAugmented
+    class ListCompaniesResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -8,7 +8,7 @@ Gemfile
 Rakefile
 lib/easyship/utils/metadata_fields.rb
 lib/easyship/utils/utils.rb
-easyship.gemspec
+easyship-ruby-sdk.gemspec
 lib/easyship/models/operations/introspecttoken.rb
 lib/easyship/models/operations/retrievetoken.rb
 lib/easyship/models/operations/retrieveinfo.rb
@@ -48,7 +48,7 @@ lib/easyship/models/shared/success.rb
 lib/easyship/models/shared/organization_list.rb
 lib/easyship/models/shared/organizationupdate.rb
 lib/easyship/models/shared/security.rb
-lib/easyship.rb
+lib/easyship-ruby-sdk.rb
 USAGE.md
 docs/models/operations/introspecttokenresponse.md
 docs/models/operations/retrievetokenresponse.md

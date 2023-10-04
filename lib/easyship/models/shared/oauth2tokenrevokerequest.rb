@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/grant_type'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # OAuth 2 Token Revoke Request
-    class OAuth2TokenRevokeRequest < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2TokenRevokeRequest < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client ID

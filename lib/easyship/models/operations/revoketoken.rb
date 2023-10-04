@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/revokeaccesstokenresponse'
 
-module OpenApiSDK
+module Easyship
   module Operations
 
-    class RevokeTokenResponse < OpenApiSDK::Utils::FieldAugmented
+    class RevokeTokenResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

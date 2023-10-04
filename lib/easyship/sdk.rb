@@ -6,7 +6,7 @@
 require 'faraday'
 require 'faraday/multipart'
 require 'sorbet-runtime'
-module OpenApiSDK
+module Easyship
   extend T::Sig
 
   class Easyship

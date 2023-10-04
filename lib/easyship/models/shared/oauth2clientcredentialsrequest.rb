@@ -6,7 +6,7 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # OAuth2ClientCredentialsRequestGrantType - OAuth 2 Grant Type
     class OAuth2ClientCredentialsRequestGrantType < T::Enum
@@ -17,7 +17,7 @@ module OpenApiSDK
 
 
     # OAuth 2 Client Credentials Request
-    class OAuth2ClientCredentialsRequest < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2ClientCredentialsRequest < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client ID

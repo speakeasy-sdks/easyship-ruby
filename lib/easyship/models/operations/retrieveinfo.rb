@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/oauth2tokeninfo'
 
-module OpenApiSDK
+module Easyship
   module Operations
 
-    class RetrieveInfoResponse < OpenApiSDK::Utils::FieldAugmented
+    class RetrieveInfoResponse < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

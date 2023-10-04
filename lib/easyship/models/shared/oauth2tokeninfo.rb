@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module Easyship
   module Shared
     # OAuth 2 Client Application
-    class OAuth2TokenInfoApplication < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2TokenInfoApplication < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client Application UID
@@ -23,7 +23,7 @@ module OpenApiSDK
     end
 
     # OAuth 2 Token Info
-    class OAuth2TokenInfo < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2TokenInfo < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client Application

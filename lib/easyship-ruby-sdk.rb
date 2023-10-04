@@ -50,5 +50,5 @@ require_relative 'sdk/auth'
 require_relative 'sdk/companies'
 require_relative 'sdk/organizations'
 
-module OpenApiSDK
+module Easyship
 end
