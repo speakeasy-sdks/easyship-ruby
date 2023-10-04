@@ -7,7 +7,7 @@
 </div>
 
 <!-- Start SDK Installation -->
-# SDK Installation
+## SDK Installation
 
 ```bash
 gem install specific_install
@@ -17,13 +17,11 @@ gem specific_install https://github.com/speakeasy-sdks/easyship-ruby
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```ruby
-require_relative easyship
+require_relative easyship_ruby_sdk
 
 
-s = OpenApiSDK::Easyship.new
+s = Easyship::Api.new
 
    
 req = Shared::OAuth2IntrospectRequest.new(
@@ -42,23 +40,23 @@ end
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-# Available Resources and Operations
+## Available Resources and Operations
 
 
-## [auth](docs/sdks/auth/README.md)
+### [auth](docs/sdks/auth/README.md)
 
 * [introspect](docs/sdks/auth/README.md#introspect) - Introspect an Access Token
 * [retrieve](docs/sdks/auth/README.md#retrieve) - Retrieve an Access Token
 * [retrieve_info](docs/sdks/auth/README.md#retrieve_info) - Retrieve info for the Access Token
 * [revoke](docs/sdks/auth/README.md#revoke) - Revoke an Access Token
 
-## [companies](docs/sdks/companies/README.md)
+### [companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create a Company
 * [list](docs/sdks/companies/README.md#list) - List all Companies
 * [update](docs/sdks/companies/README.md#update) - Update a Company
 
-## [organizations](docs/sdks/organizations/README.md)
+### [organizations](docs/sdks/organizations/README.md)
 
 * [create](docs/sdks/organizations/README.md#create) - Create an Organization
 * [delete](docs/sdks/organizations/README.md#delete) - Delete an organization
@@ -69,8 +67,6 @@ end
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 

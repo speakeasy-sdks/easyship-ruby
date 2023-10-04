@@ -21,10 +21,10 @@ Required authorization scope: `enterprise.company`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyship_ruby_sdk
 
 
-s = OpenApiSDK::Easyship.new
+s = Easyship::Api.new
 
    
 req = Shared::CompanyCreate.new(
@@ -70,10 +70,10 @@ Required authorization scope: `enterprise.company`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyship_ruby_sdk
 
 
-s = OpenApiSDK::Easyship.new
+s = Easyship::Api.new
 
    
 req = Operations::ListCompaniesRequest.new(
@@ -117,10 +117,10 @@ Required authorization scope: `enterprise.company`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyship_ruby_sdk
 
 
-s = OpenApiSDK::Easyship.new
+s = Easyship::Api.new
 
    
 req = Operations::UpdateCompaniesRequest.new(
