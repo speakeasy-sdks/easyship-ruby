@@ -24,10 +24,10 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Shared::OrganizationCreate.new(
@@ -67,10 +67,10 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Operations::DeleteOrganizationsRequest.new(
@@ -109,10 +109,10 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Operations::GetOrganizationsRequest.new(
@@ -151,10 +151,10 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Operations::ListOrganizationsRequest.new(
@@ -195,10 +195,10 @@ Required authorization scope: `enterprise.company`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Operations::ListOrganizationCompaniesRequest.new(
@@ -250,10 +250,10 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Operations::UpdateOrganizationsRequest.new(

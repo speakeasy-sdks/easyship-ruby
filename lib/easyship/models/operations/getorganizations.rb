@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/organization_single'
 
-module OpenApiSDK
+module EasyshipApi
   module Operations
 
-    class GetOrganizationsRequest < OpenApiSDK::Utils::FieldAugmented
+    class GetOrganizationsRequest < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Organization ID provided when creating the organization
@@ -24,7 +24,7 @@ module OpenApiSDK
     end
 
 
-    class GetOrganizationsResponse < OpenApiSDK::Utils::FieldAugmented
+    class GetOrganizationsResponse < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

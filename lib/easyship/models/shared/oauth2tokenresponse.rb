@@ -6,7 +6,7 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
     # OAuth2TokenResponseTokenType - OAuth 2 Token Type
     class OAuth2TokenResponseTokenType < T::Enum
@@ -17,7 +17,7 @@ module OpenApiSDK
 
 
     # OAuth 2 Token Response
-    class OAuth2TokenResponse < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2TokenResponse < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Access Token

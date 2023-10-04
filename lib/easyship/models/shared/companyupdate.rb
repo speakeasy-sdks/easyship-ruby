@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/owner'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class CompanyUpdate < OpenApiSDK::Utils::FieldAugmented
+    class CompanyUpdate < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Company name

@@ -2,10 +2,10 @@
 
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Shared::OAuth2IntrospectRequest.new(

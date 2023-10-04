@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class Security < OpenApiSDK::Utils::FieldAugmented
+    class Security < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
 

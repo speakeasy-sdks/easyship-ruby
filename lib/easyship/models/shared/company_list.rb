@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/pagination'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class CompanyListMeta < OpenApiSDK::Utils::FieldAugmented
+    class CompanyListMeta < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Pagination
@@ -24,7 +24,7 @@ module OpenApiSDK
     end
 
     # List of Companies
-    class CompanyList < OpenApiSDK::Utils::FieldAugmented
+    class CompanyList < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
 

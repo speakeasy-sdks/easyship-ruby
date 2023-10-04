@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/organization_list'
 
-module OpenApiSDK
+module EasyshipApi
   module Operations
 
-    class ListOrganizationsRequest < OpenApiSDK::Utils::FieldAugmented
+    class ListOrganizationsRequest < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Page number to fetch, default: `1`
@@ -27,7 +27,7 @@ module OpenApiSDK
     end
 
 
-    class ListOrganizationsResponse < OpenApiSDK::Utils::FieldAugmented
+    class ListOrganizationsResponse < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

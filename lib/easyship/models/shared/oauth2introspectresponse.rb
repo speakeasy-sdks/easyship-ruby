@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/token_type'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class OAuth2IntrospectResponsePlatform < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2IntrospectResponsePlatform < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Platform ID
@@ -27,7 +27,7 @@ module OpenApiSDK
     end
 
     # OAuth 2 Introspect Response
-    class OAuth2IntrospectResponse < OpenApiSDK::Utils::FieldAugmented
+    class OAuth2IntrospectResponse < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
 

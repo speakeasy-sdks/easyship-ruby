@@ -7,10 +7,10 @@ require 'sorbet-runtime'
 require 'faraday'
 require_relative '../shared/organization'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
     # Organizations detail
-    class OrganizationSingle < OpenApiSDK::Utils::FieldAugmented
+    class OrganizationSingle < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
 

@@ -3,8 +3,8 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 Gem::Specification.new do |s|
-  s.name        = 'easyship'
-  s.version     = '2.0.0'
+  s.name        = 'easyshipRubySdk'
+  s.version     = '2.1.0'
   s.platform    = Gem::Platform::RUBY
   s.licenses    = ['Apache-2.0']
   s.summary     = ''

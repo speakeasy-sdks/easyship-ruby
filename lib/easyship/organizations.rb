@@ -7,7 +7,7 @@ require 'faraday'
 require 'faraday/multipart'
 require 'sorbet-runtime'
 
-module OpenApiSDK
+module EasyshipApi
   extend T::Sig
   class Organizations
     # Organizations API

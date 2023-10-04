@@ -8,10 +8,10 @@ require 'faraday'
 require_relative '../shared/countryalpha2'
 require_relative '../shared/organization'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class CompanyOwner < OpenApiSDK::Utils::FieldAugmented
+    class CompanyOwner < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Email address
@@ -31,7 +31,7 @@ module OpenApiSDK
     end
 
 
-    class Company < OpenApiSDK::Utils::FieldAugmented
+    class Company < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Country Code in Alpha-2 format (ISO 3166-1)

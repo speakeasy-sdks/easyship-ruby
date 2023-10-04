@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class RevokeAccessTokenResponse < OpenApiSDK::Utils::FieldAugmented
+    class RevokeAccessTokenResponse < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
 

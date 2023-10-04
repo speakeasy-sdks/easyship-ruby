@@ -9,10 +9,10 @@ require_relative '../shared/companyupdate'
 require_relative '../shared/error'
 require_relative '../shared/company_single'
 
-module OpenApiSDK
+module EasyshipApi
   module Operations
 
-    class UpdateCompaniesRequest < OpenApiSDK::Utils::FieldAugmented
+    class UpdateCompaniesRequest < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Easyship company ID provided when creating the account
@@ -29,7 +29,7 @@ module OpenApiSDK
     end
 
 
-    class UpdateCompaniesResponse < OpenApiSDK::Utils::FieldAugmented
+    class UpdateCompaniesResponse < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

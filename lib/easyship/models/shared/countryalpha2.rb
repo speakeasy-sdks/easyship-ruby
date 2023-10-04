@@ -6,7 +6,7 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
     # CountryAlpha2 - Country Code in Alpha-2 format (ISO 3166-1)
     class CountryAlpha2 < T::Enum

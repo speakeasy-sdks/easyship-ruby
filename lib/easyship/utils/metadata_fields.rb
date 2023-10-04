@@ -3,7 +3,7 @@
 # typed: true
 # frozen_string_literal: true
 
-module OpenApiSDK
+module EasyshipApi
   module MetadataFields
     extend T::Sig
 

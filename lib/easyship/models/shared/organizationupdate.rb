@@ -6,10 +6,10 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
 
-    class OrganizationUpdate < OpenApiSDK::Utils::FieldAugmented
+    class OrganizationUpdate < EasyshipApi::Utils::FieldAugmented
       extend T::Sig
 
       # Organization name

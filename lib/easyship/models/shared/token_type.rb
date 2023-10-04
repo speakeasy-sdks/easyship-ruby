@@ -6,7 +6,7 @@
 require 'sorbet-runtime'
 require 'faraday'
 
-module OpenApiSDK
+module EasyshipApi
   module Shared
     # TokenType - OAuth 2 Token Type
     class TokenType < T::Enum

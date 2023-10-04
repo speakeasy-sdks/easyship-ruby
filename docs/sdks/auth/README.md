@@ -16,10 +16,10 @@ Introspect an OAuth 2 Access Token using another Access Token.
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Shared::OAuth2IntrospectRequest.new(
@@ -56,10 +56,10 @@ Retrieve an OAuth 2 Access Token.
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Shared::OAuth2ClientCredentialsRequest.new(
@@ -99,10 +99,10 @@ Retrieve an OAuth 2 Access Token information.
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
     
 res = s.auth.retrieve_info()
@@ -127,10 +127,10 @@ Introspect an OAuth 2 Access Token using another Access Token.
 ### Example Usage
 
 ```ruby
-require_relative easyship
+require_relative easyshiprubysdk
 
 
-s = OpenApiSDK::Easyship.new
+s = EasyshipApi::Easyship.new
 
    
 req = Shared::OAuth2TokenRevokeRequest.new(
