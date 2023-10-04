@@ -19,11 +19,12 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       languages: |
-        - python
+        - ruby
       mode: pr
       openapi_docs: |
         - ./openapi.yaml
       speakeasy_version: latest
+      create_release: true
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }} #Get an API Key from your workspace at https://app.speakeasyapi.dev/
