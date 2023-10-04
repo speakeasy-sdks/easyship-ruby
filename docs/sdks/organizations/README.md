@@ -203,19 +203,19 @@ s = Easyship::Api.new
    
 req = Operations::ListOrganizationCompaniesRequest.new(
   path_params=Operations::ListOrganizationCompaniesRequest.new(
-    company_name="Hickle Group",
-    easyship_company_id="Neither",
-    organization_id="1c1b2d85-fb60-4538-8666-7071b818d3fe",
+    organization_id="15e2991c-1b2d-485f-b605-3846667071b8",
+    company_name="Luettgen Group",
+    easyship_company_id="unto",
     owner_email="Hawthorne",
     sort_by=Operations::ListOrganizationCompaniesSortBy::COMPANY_NAME,
     sort_direction=Operations::ListOrganizationCompaniesSortDirection::ASC,
   ),
   query_params=Operations::ListOrganizationCompaniesRequest.new(
-    company_name="Treutel - Armstrong",
-    easyship_company_id="Facilitator male",
-    organization_id="83a30c36-9cc3-4429-bd6b-fb63c57ab99f",
-    owner_email="North Computers implement",
-    sort_by=Operations::ListOrganizationCompaniesSortBy::CREATED_AT,
+    organization_id="5e09a29d-cbe8-43a3-8c36-9cc3429fd6bf",
+    company_name="Keeling, Emmerich and Runolfsson",
+    easyship_company_id="payment Lutetium",
+    owner_email="trump North",
+    sort_by=Operations::ListOrganizationCompaniesSortBy::COMPANY_NAME,
     sort_direction=Operations::ListOrganizationCompaniesSortDirection::ASC,
   ),
 )
@@ -230,9 +230,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [Operations::ListOrganizationCompaniesRequest](../../models/operations/listorganizationcompaniesrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                  | *String*                                                                                                                           | :heavy_check_mark:                                                                                                                 | Organization ID provided when creating the organization                                                                            |
+| `company_name`                                                                                                                     | *T.nilable(String)*                                                                                                                | :heavy_minus_sign:                                                                                                                 | Filter by company name                                                                                                             |
+| `easyship_company_id`                                                                                                              | *T.nilable(String)*                                                                                                                | :heavy_minus_sign:                                                                                                                 | Filter by Easyship company ID                                                                                                      |
+| `owner_email`                                                                                                                      | *T.nilable(String)*                                                                                                                | :heavy_minus_sign:                                                                                                                 | Filter by company owner's email                                                                                                    |
+| `sort_by`                                                                                                                          | [T.nilable(Operations::ListOrganizationCompaniesSortBy)](../../models/operations/listorganizationcompaniessortby.md)               | :heavy_minus_sign:                                                                                                                 | Sort records by listed columns. Default: `created_at`                                                                              |
+| `sort_direction`                                                                                                                   | [T.nilable(Operations::ListOrganizationCompaniesSortDirection)](../../models/operations/listorganizationcompaniessortdirection.md) | :heavy_minus_sign:                                                                                                                 | Set the sort direction. Default: `DESC`                                                                                            |
 
 
 ### Response
