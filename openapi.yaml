@@ -1,445 +1,1342 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
-  title: The Speakeasy Bar
-  version: 1.0.0
-  summary: A bar that serves drinks.
-  description: A secret underground bar that serves drinks to those in the know.
+  title: Easyship Enterprise API
+  version: 2023-09
+  description: Easyship Enterprise API
+  termsOfService: https://www.easyship.com/legal/terms/overview
   contact:
-    name: Speakeasy Support
-    url: https://support.speakeasy.bar
-    email: support@speakeasy.bar
-  license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
-  termsOfService: https://speakeasy.bar/terms
+    name: Easyship Support
+    url: https://www.easyship.com/contact
 externalDocs:
-  url: https://docs.speakeasy.bar
-  description: The Speakeasy Bar Documentation.
-servers:
-  - url: https://speakeasy.bar
-    description: The production server.
-    x-speakeasy-server-id: prod
-  - url: https://staging.speakeasy.bar
-    description: The staging server.
-    x-speakeasy-server-id: staging
-  - url: https://{organization}.{environment}.speakeasy.bar
-    description: A per-organization and per-environment API.
-    x-speakeasy-server-id: customer
-    variables:
-      organization:
-        description: The organization name. Defaults to a generic organization.
-        default: api
-      environment:
-        description: The environment name. Defaults to the production environment.
-        default: prod
-        enum:
-          - prod
-          - staging
-          - dev
-security:
-  - apiKey: []
+  description: Find out more about Easyship API
+  url: https://developers.easyship.com/
 tags:
-  - name: drinks
-    description: The drinks endpoints.
-  - name: ingredients
-    description: The ingredients endpoints.
-  - name: orders
-    description: The orders endpoints.
-  - name: authentication
-    description: The authentication endpoints.
-  - name: config
-
+  - name: Authorization
+    description: OAuth 2 API
+  - name: Organizations
+    description: Organizations API
+  - name: Companies
+    description: Companies API
+security:
+  - OAuth2:
+      - enterprise.organization
+      - enterprise.company
 paths:
-
-  x-speakeasy-errors:
-    statusCodes: # Defines status codes to handle as errors for all operations
-      - 4XX # Wildcard to handle all status codes in the 400-499 range
-      - 5XX
-  /authenticate:
-    post:
-      operationId: authenticate
-      summary: Authenticate with the API by providing a username and password.
-      security: []
-      tags:
-        - authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                password:
-                  type: string
-      responses:
-        "200":
-          description: The api key to use for authenticated endpoints.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-        "401":
-          description: Invalid credentials provided.
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
-
-  /drinks:
+  /2023-09/companies:
     get:
-      x-speakeasy-usage-example: true
-      operationId: listDrinks
-      summary: Get a list of drinks.
-      description: Get a list of drinks, if authenticated this will include stock levels and product codes otherwise it will only include public information.
-      security:
-        - {}
+      summary: List all Companies
       tags:
-        - drinks
+        - Companies
+      operationId: listCompanies
+      x-speakeasy-name-override: list
+      x-speakeasy-group: Companies
+      description: |
+        List all companies which belong to organisation.
+
+        Required authorization scope: `enterprise.company`
       parameters:
-        - name: drinkType
+        - name: sort_by
           in: query
-          description: The type of drink to filter by. If not provided all drinks will be returned.
-          required: false
-          schema:
-            $ref: "#/components/schemas/DrinkType"
-      responses:
-        "200":
-          description: A list of drinks.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Drink"
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
-
-  /drink/{name}: #TODO: this should be by product code and we should have search by name
-    get:
-      operationId: getDrink
-      summary: Get a drink.
-      description: Get a drink by name, if authenticated this will include stock levels and product codes otherwise it will only include public information.
-      tags:
-        - drinks
-      parameters:
-        - name: name
-          in: path
-          required: true
           schema:
             type: string
-      responses:
-        "200":
-          description: A drink.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Drink"
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
-
-  /ingredients:
-    get:
-      operationId: listIngredients
-      summary: Get a list of ingredients.
-      description: Get a list of ingredients, if authenticated this will include stock levels and product codes otherwise it will only include public information.
-      tags:
-        - ingredients
-      parameters:
-        - name: ingredients
-          in: query
-          description: A list of ingredients to filter by. If not provided all ingredients will be returned.
+            enum:
+              - company_name
+              - created_at
           required: false
-          style: form
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
-      responses:
-        "200":
-          description: A list of ingredients.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Ingredient"
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
-
-  /order:
-    post:
-      operationId: createOrder
-      summary: Create an order.
-      description: Create an order for a drink.
-      tags:
-        - orders
-      parameters:
-        - name: callback_url
+          description: 'Sort records by listed columns. Default: `created_at`'
+          example: created_at
+        - name: sort_direction
           in: query
-          description: The url to call when the order is updated.
-          required: false
           schema:
             type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: "#/components/schemas/Order"
+            enum:
+              - ASC
+              - DESC
+          required: false
+          description: 'Set the sort direction. Default: `DESC`'
+          example: ASC
+        - name: organization_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          required: false
+          description: Filter by organization ID
+        - name: company_name
+          in: query
+          schema:
+            type: string
+          required: false
+          description: Filter by company name
+        - name: easyship_company_id
+          in: query
+          schema:
+            type: string
+          required: false
+          description: Filter by Easyship company ID
+        - name: owner_email
+          in: query
+          schema:
+            type: string
+          required: false
+          description: Filter by company owner's email
       responses:
-        "200":
-          description: The order was created successfully.
+        '200':
+          description: company list
           content:
             application/json:
-              schema:
-                $ref: "#/components/schemas/Order"
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
-      callbacks:
-        orderUpdate:
-          "{$request.query.callback_url}":
-            post:
-              summary: Receive order updates.
-              description: Receive order updates from the supplier, this will be called whenever the status of an order changes.
-              tags:
-                - orders
-              requestBody:
-                required: true
-                content:
-                  application/json:
-                    schema:
-                      type: object
-                      properties:
-                        order:
-                          $ref: "#/components/schemas/Order"
-              responses:
-                "200":
-                  description: The order update was received successfully.
-                "5XX":
-                  $ref: "#/components/responses/APIError"
+              examples:
                 default:
-                  $ref: "#/components/responses/UnknownError"
-  /webhooks/subscribe:
+                  value:
+                    companies:
+                      - country_alpha2: HK
+                        created_at: '2022-02-22T12:20:00Z'
+                        easyship_company_id: CHK100002
+                        name: Test company 2
+                        organization:
+                          created_at: '2022-02-22T12:21:00Z'
+                          id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                          name: test organization
+                          updated_at: '2022-02-22T12:21:00Z'
+                        owner:
+                          email: test@domain.com
+                          first_name: Foo
+                          last_name: Bar
+                        updated_at: '2022-02-22T12:21:00Z'
+                    meta:
+                      pagination:
+                        page: 1
+                        next: null
+                        count: 1
+                  summary: company list
+              schema:
+                $ref: '#/components/schemas/company_list'
     post:
-      operationId: subscribeToWebhooks
-      summary: Subscribe to webhooks.
-      description: Subscribe to webhooks.
+      summary: Create a Company
       tags:
-        - config
+        - Companies
+      operationId: createCompanies
+      x-speakeasy-name-override: create
+      x-speakeasy-group: Companies
+      description: |
+        Create a new company in specific organization.
+
+        Required authorization scope: `enterprise.company`
+      parameters: []
+      responses:
+        '201':
+          description: company successfully created
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    company:
+                      country_alpha2: HK
+                      created_at: '2022-02-22T12:21:00Z'
+                      easyship_company_id: CHK100001
+                      name: test_company_name
+                      organization:
+                        created_at: '2022-02-22T12:21:00Z'
+                        id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                        name: test organization
+                        updated_at: '2022-02-22T12:21:00Z'
+                      owner:
+                        email: test_99@easyship.com
+                        first_name: John
+                        last_name: Smith
+                      updated_at: '2022-02-22T12:21:00Z'
+                  summary: company successfully created
+              schema:
+                $ref: '#/components/schemas/company_single'
+        '422':
+          description: invalid params
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: invalid_content
+                      details:
+                        - Email has already been taken
+                      message: The request body content is not valid.
+                      request_id: 01563646-58c1-4607-8fe0-cae3e92c4477
+                      type: invalid_request_error
+                  summary: invalid params
+              schema:
+                $ref: '#/components/schemas/Error'
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  url:
-                    type: string
-                  webhook:
-                    type: string
-                    enum:
-                      - stockUpdate
-      responses:
-        "200":
-          description: The webhook was subscribed to successfully.
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
-webhooks:
-  stockUpdate:
-    post:
-      summary: Receive stock updates.
-      description: Receive stock updates from the bar, this will be called whenever the stock levels of a drink or ingredient changes.
-      tags:
-        - drinks
-        - ingredients
-      requestBody:
+              $ref: '#/components/schemas/CompanyCreate'
+            examples:
+              company_successfully_created:
+                summary: Create a Company
+                value:
+                  owner:
+                    email: test_99@easyship.com
+                    first_name: John
+                    last_name: Smith
+                  name: test_company_name
+                  country_alpha2: HK
+                  organization_id: 01563646-58c1-4607-8fe0-cae3e33c0001
+  /2023-09/companies/{easyship_company_id}:
+    parameters:
+      - name: easyship_company_id
+        in: path
+        schema:
+          type: string
+          format: uuid
         required: true
+        description: Easyship company ID provided when creating the account
+    patch:
+      summary: Update a Company
+      tags:
+        - Companies
+      operationId: updateCompanies
+      x-speakeasy-name-override: update
+      x-speakeasy-group: Companies
+      description: |
+        Update a company.
+
+        Required authorization scope: `enterprise.company`
+      parameters: []
+      responses:
+        '200':
+          description: company successfully updated
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    company:
+                      country_alpha2: HK
+                      created_at: '2022-02-22T12:21:00Z'
+                      easyship_company_id: CHK111111
+                      name: test_update_company_name
+                      organization:
+                        created_at: '2022-02-22T12:21:00Z'
+                        id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                        name: test organization
+                        updated_at: '2022-02-22T12:21:00Z'
+                      owner:
+                        email: test_update@easyship.com
+                        first_name: Updated first name
+                        last_name: Updated last name
+                      updated_at: '2022-02-22T12:21:00Z'
+                  summary: company successfully updated
+              schema:
+                $ref: '#/components/schemas/company_single'
+        '422':
+          description: invalid params
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: invalid_content
+                      details:
+                        - Email has already been taken
+                      message: The request body content is not valid.
+                      request_id: 01563646-58c1-4607-8fe0-cae3e92c4477
+                      type: invalid_request_error
+                  summary: invalid params
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                drink:
-                  $ref: "#/components/schemas/Drink"
-                ingredient:
-                  $ref: "#/components/schemas/Ingredient"
+              $ref: '#/components/schemas/CompanyUpdate'
+            examples:
+              company_successfully_updated:
+                summary: Update a Company
+                value:
+                  owner:
+                    email: test_update@easyship.com
+                    first_name: Updated first name
+                    last_name: Updated last name
+                  name: test_update_company_name
+  /2023-09/organizations/{organization_id}/companies:
+    get:
+      summary: List all Companies of the Organization
+      tags:
+        - Organizations
+      operationId: listOrganizationCompanies
+      x-speakeasy-name-override: list_companies
+      x-speakeasy-group: Organizations
+      description: |
+        Retrieve a list of companies from a specific organization.
+
+        Required authorization scope: `enterprise.company`
+      parameters:
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+            enum:
+              - company_name
+              - created_at
+          required: false
+          description: 'Sort records by listed columns. Default: `created_at`'
+          example: created_at
+        - name: sort_direction
+          in: query
+          schema:
+            type: string
+            enum:
+              - ASC
+              - DESC
+          required: false
+          description: 'Set the sort direction. Default: `DESC`'
+          example: ASC
+        - name: organization_id
+          in: path
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Organization ID provided when creating the organization
+        - name: company_name
+          in: query
+          schema:
+            type: string
+          required: false
+          description: Filter by company name
+        - name: easyship_company_id
+          in: query
+          schema:
+            type: string
+          required: false
+          description: Filter by Easyship company ID
+        - name: owner_email
+          in: query
+          schema:
+            type: string
+          required: false
+          description: Filter by company owner's email
       responses:
-        "200":
-          description: The stock update was received successfully.
-        "5XX":
-          $ref: "#/components/responses/APIError"
-        default:
-          $ref: "#/components/responses/UnknownError"
+        '200':
+          description: company list
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    companies:
+                      - country_alpha2: HK
+                        created_at: '2022-02-22T12:21:00Z'
+                        easyship_company_id: CHK100001
+                        name: Test company 1
+                        organization:
+                          created_at: '2022-02-22T12:21:00Z'
+                          id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                          name: test organization
+                          updated_at: '2022-02-22T12:21:00Z'
+                        owner:
+                          email: test@test.com
+                          first_name: Foo
+                          last_name: Bar
+                        updated_at: '2022-02-22T12:21:00Z'
+                      - country_alpha2: HK
+                        created_at: '2022-02-22T12:20:00Z'
+                        easyship_company_id: CHK100002
+                        name: Test company 2
+                        organization:
+                          created_at: '2022-02-22T12:21:00Z'
+                          id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                          name: test organization
+                          updated_at: '2022-02-22T12:21:00Z'
+                        owner:
+                          email: test@test.com
+                          first_name: Foo
+                          last_name: Bar
+                        updated_at: '2022-02-22T12:21:00Z'
+                    meta:
+                      pagination:
+                        page: 1
+                        next: null
+                        count: 2
+                  summary: company list
+              schema:
+                $ref: '#/components/schemas/company_list'
+  /oauth2/token:
+    post:
+      summary: Retrieve an Access Token
+      tags:
+        - Authorization
+      operationId: retrieveToken
+      x-speakeasy-name-override: retrieve
+      x-speakeasy-group: Auth
+      description: |
+        Retrieve an OAuth 2 Access Token.
+      parameters: []
+      responses:
+        '200':
+          description: Access Token
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    access_token: test_Bwv0LTQXA4/SfloRI3HmkJ0a05Lj8FX+V5hDyWC7Gr0=
+                    token_type: Bearer
+                    expires_in: 7200
+                    scope: enterprise.organization
+                    created_at: 1645532460
+                  summary: Access Token
+              schema:
+                $ref: '#/components/schemas/OAuth2TokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuth2ClientCredentialsRequest'
+            examples:
+              access_token:
+                summary: Retrieve an Access Token
+                value:
+                  grant_type: client_credentials
+                  client_id: 28P8K2PSAsVyugLBKIY1neZXYulpHElHVAAmOrJ9Pds
+                  client_secret: M9z6YbwW-e19ffQ6w4YuQIU0SGE2wNhOzBlWslNF4mY
+                  scope: enterprise.organization
+  /oauth2/token/info:
+    get:
+      summary: Retrieve info for the Access Token
+      tags:
+        - Authorization
+      operationId: retrieveInfo
+      x-speakeasy-name-override: retrieve_info
+      x-speakeasy-group: Auth
+      description: |
+        Retrieve an OAuth 2 Access Token information.
+      responses:
+        '200':
+          description: Access Token Info
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    resource_owner_id: null
+                    scope:
+                      - enterprise.organization
+                    expires_in: 1645539660
+                    application:
+                      uid: 28P8K2PSAsVyugLBKIY1neZXYulpHElHVAAmOrJ9Pds
+                    created_at: 1645532460
+                  summary: Access Token Info
+              schema:
+                $ref: '#/components/schemas/OAuth2TokenInfo'
+  /oauth2/introspect:
+    post:
+      summary: Introspect an Access Token
+      tags:
+        - Authorization
+      operationId: introspectToken
+      x-speakeasy-name-override: introspect
+      x-speakeasy-group: Auth
+      description: |
+        Introspect an OAuth 2 Access Token using another Access Token.
+      parameters: []
+      responses:
+        '200':
+          description: Access Token Introspect
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    active: true
+                    scope: enterprise.organization
+                    client_id: 28P8K2PSAsVyugLBKIY1neZXYulpHElHVAAmOrJ9Pds
+                    token_type: Bearer
+                    exp: 3291072120
+                    iat: 1645532460
+                    easyship_company_id: CHK000001
+                    platform:
+                      id: 930
+                      name: Enterprise API
+                  summary: Access Token Introspect
+              schema:
+                $ref: '#/components/schemas/OAuth2IntrospectResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuth2IntrospectRequest'
+            examples:
+              access_token_introspect:
+                summary: Introspect an Access Token
+                value:
+                  token: test_0RQXwH8Bmf5UkRxB/plFd7f3/R46ffRfbtiwvSZi9Ao=
+  /oauth2/revoke:
+    post:
+      summary: Revoke an Access Token
+      tags:
+        - Authorization
+      operationId: revokeToken
+      x-speakeasy-name-override: revoke
+      x-speakeasy-group: Auth
+      description: |
+        Introspect an OAuth 2 Access Token using another Access Token.
+      parameters: []
+      responses:
+        '200':
+          description: Revoke Access Token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevokeAccessTokenResponse'
+              examples:
+                default:
+                  value: {}
+                  summary: Revoke Access Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuth2TokenRevokeRequest'
+            examples:
+              revoke_access_token:
+                summary: Revoke an Access Token
+                value:
+                  token: test_z3EYsufgM6SsOOEbXkzZtvw8/OTr8FyMCN4SUluNl78=
+                  grant_type: client_credentials
+                  client_id: 28P8K2PSAsVyugLBKIY1neZXYulpHElHVAAmOrJ9Pds
+                  client_secret: M9z6YbwW-e19ffQ6w4YuQIU0SGE2wNhOzBlWslNF4mY
+  /2023-09/organizations:
+    get:
+      summary: List all Organizations
+      tags:
+        - Organizations
+      operationId: listOrganizations
+      x-speakeasy-name-override: list_all
+      x-speakeasy-group: Organizations
+      description: |
+        Retrieve a list of organizations (groups of child companies) that are a part of your group.
+
+        Required authorization scope: `enterprise.organization`
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          description: 'Page number to fetch, default: `1`'
+          example: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+          required: false
+          description: 'Number of records per page to fetch, default: `20`'
+          example: 10
+      responses:
+        '200':
+          description: organization list
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    organizations:
+                      - created_at: '2022-02-22T12:21:00Z'
+                        id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                        name: My organization
+                        updated_at: '2022-02-22T12:21:00Z'
+                    meta:
+                      pagination:
+                        page: 1
+                        next: null
+                        count: 1
+                  summary: organization list
+              schema:
+                $ref: '#/components/schemas/organization_list'
+    post:
+      summary: Create an Organization
+      tags:
+        - Organizations
+      operationId: createOrganizations
+      x-speakeasy-name-override: create
+      x-speakeasy-group: Organizations
+      description: |
+        Create a new organization (group of your child companies) in your group.
+
+        Required authorization scope: `enterprise.organization`
+      parameters: []
+      responses:
+        '201':
+          description: organization successfully created
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    organization:
+                      created_at: '2022-02-22T12:21:00Z'
+                      id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                      name: New organization
+                      updated_at: '2022-02-22T12:21:00Z'
+                  summary: organization successfully created
+              schema:
+                $ref: '#/components/schemas/organization_single'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationCreate'
+  /2023-09/organizations/{organization_id}:
+    parameters:
+      - name: organization_id
+        in: path
+        schema:
+          type: string
+          format: uuid
+        required: true
+        description: Organization ID provided when creating the organization
+    get:
+      summary: Get an Organization
+      tags:
+        - Organizations
+      operationId: getOrganizations
+      x-speakeasy-name-override: get
+      x-speakeasy-group: Organizations
+      description: |
+        Retrieve details of a specific organization (group of child companies) in your group.
+
+        Required authorization scope: `enterprise.organization`
+      responses:
+        '200':
+          description: organization
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    organization:
+                      created_at: '2022-02-22T12:21:00Z'
+                      id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                      name: My organization
+                      updated_at: '2022-02-22T12:21:00Z'
+                  summary: organization
+              schema:
+                $ref: '#/components/schemas/organization_single'
+    patch:
+      summary: Update an Organization
+      tags:
+        - Organizations
+      operationId: updateOrganizations
+      x-speakeasy-name-override: update
+      x-speakeasy-group: Organizations
+      description: |
+        Update a specific organization (group of child companies).
+
+        Required authorization scope: `enterprise.organization`
+      parameters: []
+      responses:
+        '200':
+          description: organization successfully updated
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    organization:
+                      created_at: '2022-02-22T12:21:00Z'
+                      id: 01563646-58c1-4607-8fe0-cae3e33c0001
+                      name: Updated organization name
+                      updated_at: '2022-02-22T12:21:00Z'
+                  summary: organization successfully updated
+              schema:
+                $ref: '#/components/schemas/organization_single'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+    delete:
+      summary: Delete an organization
+      tags:
+        - Organizations
+      operationId: deleteOrganizations
+      x-speakeasy-name-override: delete
+      x-speakeasy-group: Organizations
+      description: |
+        Delete an organization (group of child companies) from your group.
+        An organization can be deleted only when there are no companies in it.
+
+        Required authorization scope: `enterprise.organization`
+      responses:
+        '200':
+          description: organization successfully deleted
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    success:
+                      message: Organization successfully deleted
+                  summary: organization successfully deleted
+              schema:
+                $ref: '#/components/schemas/Success'
+        '422':
+          description: failed to delete the organization
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: invalid_content
+                      details:
+                        - Unable to delete an organization which still has companies
+                      message: The request body content is not valid.
+                      request_id: 01563646-58c1-4607-8fe0-cae3e92c4477
+                      type: invalid_request_error
+                  summary: failed to delete the organization
+              schema:
+                $ref: '#/components/schemas/Error'
+servers:
+  - url: https://enterprise-api.easyship.com
+    description: Production
 components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://enterprise-api.easyship.com/oauth2/token
+          scopes:
+            address: Addresses API (Public API)
+            address_validation: Address Validations API (Public API)
+            asset: Assets API (Public API)
+            batch: Batches API (Public API)
+            box: Boxes API (Public API)
+            company: Companies API (Public API)
+            courier: Couriers API (Public API)
+            courier_account: Courier Accounts API (Public API)
+            credit: Credits API (Public API)
+            custom_markup_rate: Custom Markup Rates API (Public API)
+            enterprise.child_companies_access: Allow accessing child companies under the Public API using X_EASYSHIP_COMPANY_ID header (Enterprise API)
+            enterprise.company: Companies API (Enterprise API)
+            enterprise.organization: Organizations API (Enterprise API)
+            hs_code: Hs Codes API (Public API)
+            label: Labels API (Public API)
+            location: Locations API (Public API)
+            manifest: Manifests API (Public API)
+            pickup: Pickups API (Public API)
+            product: Products API (Public API)
+            rate: Rates API (Public API)
+            reference: References API (Public API)
+            settings: Settings API (Public API)
+            shipment: Shipments API (Public API)
+            shipping_rule: Shipping Rules API (Public API)
+            store: Stores API (Public API)
+            tag: Tags API (Public API)
+            tax_and_duty: Tax And Duties API (Public API)
+            track: Tracks API (Public API)
+            track_3p: Track 3ps API (Public API)
+            transaction_record: Transaction Records API (Public API)
+            webhook: Webhooks API (Public API)
   schemas:
-    APIError:
+    RevokeAccessTokenResponse:
       type: object
       properties:
-        code:
-          type: string
         message:
           type: string
-        details:
+        status:
+          type: integer
+          format: int32
+    company_single:
+      type: object
+      description: Account Detail
+      additionalProperties: false
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+    company_list:
+      type: object
+      description: List of Companies
+      additionalProperties: false
+      properties:
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Company'
+        meta:
           type: object
-          additionalProperties: true
+          additionalProperties: false
+          properties:
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    organization_list:
+      type: object
+      description: List of Organizations
+      additionalProperties: false
+      properties:
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+        meta:
+          type: object
+          additionalProperties: false
+          properties:
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+    organization_single:
+      type: object
+      description: Organizations detail
+      additionalProperties: false
+      properties:
+        organization:
+          $ref: '#/components/schemas/Organization'
+    Company:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          description: Company name
+        country_alpha2:
+          $ref: '#/components/schemas/CountryAlpha2'
+        easyship_company_id:
+          type: string
+          description: Readable identifier prefixed with ES (Easyship) and destination country code
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the company was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the company was last updated
+        owner:
+          type: object
+          additionalProperties: false
+          properties:
+            email:
+              type: string
+              description: Email address
+              format: (?i-mx:\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])\z)
+            first_name:
+              type: string
+              description: First name of the company owner
+              maxLength: 140
+              minLength: 1
+            last_name:
+              type: string
+              description: Last name of the company owner
+              maxLength: 140
+              minLength: 1
+        organization:
+          $ref: '#/components/schemas/Organization'
+    CompanyCreate:
+      type: object
+      additionalProperties: false
+      required:
+        - name
+        - country_alpha2
+        - owner
+        - organization_id
+      properties:
+        organization_id:
+          $ref: '#/components/schemas/Organization/properties/id'
+        name:
+          $ref: '#/components/schemas/Company/properties/name'
+        country_alpha2:
+          $ref: '#/components/schemas/CountryAlpha2'
+        owner:
+          $ref: '#/components/schemas/CompanyUserCreate'
+    CompanyUserCreate:
+      allOf:
+        - $ref: '#/components/schemas/Company/properties/owner'
+        - required:
+            - first_name
+            - last_name
+            - email
+    CompanyUpdate:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/Company/properties/name'
+        owner:
+          $ref: '#/components/schemas/Company/properties/owner'
+    CountryAlpha2:
+      type: string
+      description: Country Code in Alpha-2 format (ISO 3166-1)
+      enum:
+        - AD
+        - AE
+        - AF
+        - AG
+        - AI
+        - AL
+        - AM
+        - AN
+        - AO
+        - AQ
+        - AR
+        - AS
+        - AT
+        - AU
+        - AW
+        - AX
+        - AZ
+        - BA
+        - BB
+        - BD
+        - BE
+        - BF
+        - BG
+        - BH
+        - BI
+        - BJ
+        - BL
+        - BM
+        - BN
+        - BO
+        - BQ
+        - BR
+        - BS
+        - BT
+        - BV
+        - BW
+        - BY
+        - BZ
+        - CA
+        - CC
+        - CD
+        - CF
+        - CG
+        - CH
+        - CI
+        - CK
+        - CL
+        - CM
+        - CN
+        - CO
+        - CR
+        - CU
+        - CV
+        - CW
+        - CX
+        - CY
+        - CZ
+        - DE
+        - DJ
+        - DK
+        - DM
+        - DO
+        - DZ
+        - EC
+        - EE
+        - EG
+        - EH
+        - ER
+        - ES
+        - ET
+        - FI
+        - FJ
+        - FK
+        - FM
+        - FO
+        - FR
+        - GA
+        - GB
+        - GD
+        - GE
+        - GF
+        - GG
+        - GH
+        - GI
+        - GL
+        - GM
+        - GN
+        - GP
+        - GQ
+        - GR
+        - GS
+        - GT
+        - GU
+        - GW
+        - GY
+        - HK
+        - HM
+        - HN
+        - HR
+        - HT
+        - HU
+        - ID
+        - IE
+        - IL
+        - IM
+        - IN
+        - IO
+        - IQ
+        - IR
+        - IS
+        - IT
+        - JE
+        - JM
+        - JO
+        - JP
+        - KE
+        - KG
+        - KH
+        - KI
+        - KM
+        - KN
+        - KP
+        - KR
+        - KW
+        - KY
+        - KZ
+        - LA
+        - LB
+        - LC
+        - LI
+        - LK
+        - LR
+        - LS
+        - LT
+        - LU
+        - LV
+        - LY
+        - MA
+        - MC
+        - MD
+        - ME
+        - MF
+        - MG
+        - MH
+        - MK
+        - ML
+        - MM
+        - MN
+        - MO
+        - MP
+        - MQ
+        - MR
+        - MS
+        - MT
+        - MU
+        - MV
+        - MW
+        - MX
+        - MY
+        - MZ
+        - NA
+        - NC
+        - NE
+        - NF
+        - NG
+        - NI
+        - NL
+        - 'NO'
+        - NP
+        - NR
+        - NU
+        - NZ
+        - OM
+        - PA
+        - PE
+        - PF
+        - PG
+        - PH
+        - PK
+        - PL
+        - PM
+        - PN
+        - PR
+        - PS
+        - PT
+        - PW
+        - PY
+        - QA
+        - RE
+        - RO
+        - RS
+        - RU
+        - RW
+        - SA
+        - SB
+        - SC
+        - SD
+        - SE
+        - SG
+        - SH
+        - SI
+        - SJ
+        - SK
+        - SL
+        - SM
+        - SN
+        - SO
+        - SR
+        - SS
+        - ST
+        - SV
+        - SX
+        - SY
+        - SZ
+        - TC
+        - TD
+        - TF
+        - TG
+        - TH
+        - TJ
+        - TK
+        - TL
+        - TM
+        - TN
+        - TO
+        - TR
+        - TT
+        - TV
+        - TW
+        - TZ
+        - UA
+        - UG
+        - UM
+        - US
+        - UY
+        - UZ
+        - VA
+        - VC
+        - VE
+        - VG
+        - VI
+        - VN
+        - VU
+        - WF
+        - WS
+        - YE
+        - YT
+        - ZA
+        - ZM
+        - ZW
     Error:
       type: object
+      description: Error
+      additionalProperties: false
       properties:
-        code:
-          type: string
-        message:
-          type: string
-    Drink:
+        error:
+          type: object
+          additionalProperties: false
+          properties:
+            code:
+              type: string
+              description: A short code that represents the error.
+            type:
+              type: string
+              description: The type of error returned.
+              enum:
+                - invalid_request_error
+                - api_error
+            message:
+              type: string
+              description: A human-readable message providing brief information about the error.
+            details:
+              type: array
+              description: An array of human-readable messages providing detailed information about the error.
+              nullable: true
+              items:
+                type: string
+            request_id:
+              type: string
+              description: An unique ID represent the request.
+    Organization:
       type: object
+      additionalProperties: false
       properties:
+        id:
+          type: string
+          format: uuid
+          description: Organization ID
         name:
-          description: The name of the drink.
           type: string
-          examples:
-            - Old Fashioned
-            - Manhattan
-            - Negroni
-        type:
-          $ref: "#/components/schemas/DrinkType"
-        price:
-          description: The price of one unit of the drink in US cents.
-          type: number
-          examples:
-            - 1000 # $10.00
-            - 1200 # $12.00
-            - 1500 # $15.00
-        stock:
-          description: The number of units of the drink in stock, only available when authenticated.
-          type: integer
-          readOnly: true
-        productCode:
-          description: The product code of the drink, only available when authenticated.
+          description: Organization name
+        updated_at:
           type: string
-          examples:
-            - "AC-A2DF3"
-            - "NAC-3F2D1"
-            - "APM-1F2D3"
+          format: datetime
+        created_at:
+          type: string
+          format: datetime
+    OrganizationCreate:
+      type: object
+      additionalProperties: false
       required:
         - name
-        - price
-    DrinkType:
-      description: The type of drink.
-      type: string
-      enum:
-        - cocktail
-        - non-alcoholic
-        - beer
-        - wine
-        - spirit
-        - other
-    Ingredient:
-      type: object
       properties:
         name:
-          description: The name of the ingredient.
           type: string
-          examples:
-            - Sugar Syrup
-            - Angostura Bitters
-            - Orange Peel
-        type:
-          $ref: "#/components/schemas/IngredientType"
-        stock:
-          description: The number of units of the ingredient in stock, only available when authenticated.
-          type: integer
-          examples:
-            - 10
-            - 5
-            - 0
-          readOnly: true
-        productCode:
-          description: The product code of the ingredient, only available when authenticated.
-          type: string
-          examples:
-            - "AC-A2DF3"
-            - "NAC-3F2D1"
-            - "APM-1F2D3"
-      required:
-        - name
-        - type
-    IngredientType:
-      description: The type of ingredient.
-      type: string
-      enum:
-        - fresh
-        - long-life
-        - packaged
-    Order:
-      description: An order for a drink or ingredient.
+          description: Organization name
+    OrganizationUpdate:
       type: object
+      additionalProperties: false
       properties:
-        type:
-          $ref: "#/components/schemas/OrderType"
-        productCode:
-          description: The product code of the drink or ingredient.
-          type: string
-          examples:
-            - "AC-A2DF3"
-            - "NAC-3F2D1"
-            - "APM-1F2D3"
-        quantity:
-          description: The number of units of the drink or ingredient to order.
+        name:
+          $ref: '#/components/schemas/OrganizationCreate/properties/name'
+    Pagination:
+      type: object
+      description: Pagination
+      additionalProperties: false
+      properties:
+        next:
           type: integer
-          minimum: 1
-        status:
-          description: The status of the order.
+          nullable: true
+        count:
+          type: integer
+          description: The total number of items. The `null` value is used with countless pagination (used for faster response on large datasets, like shipments).
+          nullable: true
+        page:
+          type: integer
+          description: Current page
+    Success:
+      type: object
+      description: General success response
+      additionalProperties: false
+      properties:
+        success:
+          type: object
+          additionalProperties: false
+          properties:
+            message:
+              type: string
+    OAuth2ClientCredentialsRequest:
+      type: object
+      description: OAuth 2 Client Credentials Request
+      additionalProperties: false
+      required:
+        - grant_type
+        - client_id
+        - client_secret
+        - scope
+      properties:
+        grant_type:
           type: string
+          description: OAuth 2 Grant Type
           enum:
-            - pending
-            - processing
-            - complete
-          readOnly: true
+            - client_credentials
+        client_id:
+          type: string
+          description: OAuth 2 Client ID
+        client_secret:
+          type: string
+          description: OAuth 2 Client Secret
+        scope:
+          type: string
+          description: OAuth 2 Scopes separated by space. All Enterprise and Public API scopes are supported, but they must be allowed on the Enterprise API Client Application on the Dashboard.
+    OAuth2TokenResponse:
+      type: object
+      description: OAuth 2 Token Response
+      additionalProperties: false
+      properties:
+        access_token:
+          type: string
+          description: OAuth 2 Access Token
+        token_type:
+          type: string
+          description: OAuth 2 Token Type
+          enum:
+            - Bearer
+        expires_in:
+          type: integer
+          description: OAuth 2 Access Token Expiration Time in Seconds
+        scope:
+          $ref: '#/components/schemas/OAuth2ClientCredentialsRequest/properties/scope'
+        created_at:
+          type: integer
+          description: OAuth 2 Access Token Creation Time
+    OAuth2TokenInfo:
+      type: object
+      description: OAuth 2 Token Info
+      additionalProperties: false
+      properties:
+        resource_owner_id:
+          type: string
+          nullable: true
+          description: OAuth 2 Resource Owner ID. Always `null` when using `client_credentials` grant type.
+        scope:
+          description: OAuth 2 Scopes
+          type: array
+          items:
+            type: string
+            description: OAuth 2 Scope name
+        expires_in:
+          $ref: '#/components/schemas/OAuth2TokenResponse/properties/expires_in'
+        created_at:
+          $ref: '#/components/schemas/OAuth2TokenResponse/properties/created_at'
+        application:
+          type: object
+          description: OAuth 2 Client Application
+          additionalProperties: false
+          properties:
+            uid:
+              type: string
+              description: OAuth 2 Client Application UID
+    OAuth2IntrospectRequest:
+      type: object
+      description: OAuth 2 Introspect Request
+      additionalProperties: false
+      properties:
+        token:
+          type: string
+          description: OAuth 2 Access Token
+    OAuth2IntrospectResponse:
+      type: object
+      description: OAuth 2 Introspect Response
+      additionalProperties: false
+      properties:
+        active:
+          type: boolean
+        scope:
+          $ref: '#/components/schemas/OAuth2ClientCredentialsRequest/properties/scope'
+        client_id:
+          $ref: '#/components/schemas/OAuth2ClientCredentialsRequest/properties/client_id'
+        token_type:
+          $ref: '#/components/schemas/OAuth2TokenResponse/properties/token_type'
+        iat:
+          type: integer
+        exp:
+          type: integer
+        easyship_company_id:
+          type: string
+          description: Easyship Company ID
+        platform:
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              type: integer
+              description: Platform ID
+            name:
+              type: string
+              description: Platform Name
+    OAuth2TokenRevokeRequest:
+      type: object
+      description: OAuth 2 Token Revoke Request
+      additionalProperties: false
       required:
-        - type
-        - productCode
-        - quantity
-        - status
-    OrderType:
-      description: The type of order.
-      type: string
-      enum:
-        - drink
-        - ingredient
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: Authorization
-      in: header
-  responses:
-    APIError:
-      description: An error occurred interacting with the API.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/APIError"
-    UnknownError:
-      description: An unknown error occurred interacting with the API.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
+        - grant_type
+        - client_id
+        - client_secret
+        - token
+      properties:
+        grant_type:
+          $ref: '#/components/schemas/OAuth2ClientCredentialsRequest/properties/grant_type'
+        client_id:
+          $ref: '#/components/schemas/OAuth2ClientCredentialsRequest/properties/client_id'
+        client_secret:
+          $ref: '#/components/schemas/OAuth2ClientCredentialsRequest/properties/client_secret'
+        token:
+          $ref: '#/components/schemas/OAuth2TokenResponse/properties/access_token'
