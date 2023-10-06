@@ -189,13 +189,22 @@ module Easyship
       res
     end
 
-    sig { params(request: T.nilable(Operations::ListOrganizationCompaniesRequest)).returns(Utils::FieldAugmented) }
-    def list_companies(request)
+    sig { params(organization_id: String, company_name: T.nilable(String), easyship_company_id: T.nilable(String), owner_email: T.nilable(String), sort_by: T.nilable(Operations::ListOrganizationCompaniesSortBy), sort_direction: T.nilable(Operations::ListOrganizationCompaniesSortDirection)).returns(Utils::FieldAugmented) }
+    def list_companies(organization_id, company_name = nil, easyship_company_id = nil, owner_email = nil, sort_by = nil, sort_direction = nil)
       # list_companies - List all Companies of the Organization
       # Retrieve a list of companies from a specific organization.
       # 
       # Required authorization scope: `enterprise.company`
       # 
+      request = Operations::ListOrganizationCompaniesRequest.new(
+        
+        organization_id: organization_id,
+        company_name: company_name,
+        easyship_company_id: easyship_company_id,
+        owner_email: owner_email,
+        sort_by: sort_by,
+        sort_direction: sort_direction
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
