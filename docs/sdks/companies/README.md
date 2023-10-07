@@ -27,17 +27,10 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 
    
-req = Shared::CompanyCreate.new(
-  request=Shared::CompanyCreate.new(
-    country_alpha2=Shared::CountryAlpha2::KP,
-    name="Configuration Money",
-    organization_id="c1fc6fe0-7241-4bcd-989d-c7fa504e0833",
-    owner=Shared::CompanyUserCreate.new(
-      email="female",
-      first_name="Ricardo",
-      last_name="Hand",
-    ),
-  ),
+req = ::.new(
+  request=.new{
+    "online": "Configuration",
+  },
 )
     
 res = s.companies.create(req)
@@ -50,9 +43,9 @@ end
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [Shared::CompanyCreate](../../models/shared/companycreate.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [T::Hash[Symbol, Object]](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 
 ### Response
@@ -131,23 +124,13 @@ s = Easyship::Api.new
 req = Operations::UpdateCompaniesRequest.new(
   path_params=Operations::UpdateCompaniesRequest.new(
     easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
-    company_update=Shared::CompanyUpdate.new(
-      name="JBOD",
-      owner=Shared::Owner.new(
-        email="Quality guestbook driver",
-        first_name="Eulah",
-        last_name="Roob",
-      ),
-    ),
+    request_body=.new{
+      "East": "Baht",
+    },
   ),
-  company_update=Shared::CompanyUpdate.new(
-    name="Gasoline Lev",
-    owner=Shared::Owner.new(
-      email="Northwest Fantastic",
-      first_name="Fermin",
-      last_name="O'Connell",
-    ),
-  ),
+  request_body=.new{
+    "Quality": "guestbook",
+  },
 )
     
 res = s.companies.update(req)
@@ -160,10 +143,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `easyship_company_id`                                                    | *String*                                                                 | :heavy_check_mark:                                                       | Easyship company ID provided when creating the account                   |
-| `company_update`                                                         | [T.nilable(Shared::CompanyUpdate)](../../models/shared/companyupdate.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `easyship_company_id`                                  | *String*                                               | :heavy_check_mark:                                     | Easyship company ID provided when creating the account |
+| `request_body`                                         | T::Hash[Symbol, *Object*]                              | :heavy_minus_sign:                                     | N/A                                                    |
 
 
 ### Response

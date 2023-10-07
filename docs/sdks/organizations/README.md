@@ -30,10 +30,10 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 
    
-req = Shared::OrganizationCreate.new(
-  request=Shared::OrganizationCreate.new(
-    name="bluetooth Extended",
-  ),
+req = ::.new(
+  request=.new{
+    "online": "Configuration",
+  },
 )
     
 res = s.organizations.create(req)
@@ -46,9 +46,9 @@ end
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [Shared::OrganizationCreate](../../models/shared/organizationcreate.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [T::Hash[Symbol, Object]](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 
 ### Response
@@ -264,13 +264,13 @@ s = Easyship::Api.new
 req = Operations::UpdateOrganizationsRequest.new(
   path_params=Operations::UpdateOrganizationsRequest.new(
     organization_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
-    organization_update=Shared::OrganizationUpdate.new(
-      name="JBOD",
-    ),
+    request_body=.new{
+      "East": "Baht",
+    },
   ),
-  organization_update=Shared::OrganizationUpdate.new(
-    name="Quality guestbook driver",
-  ),
+  request_body=.new{
+    "Quality": "guestbook",
+  },
 )
     
 res = s.organizations.update(req)
@@ -283,10 +283,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `organization_id`                                                                  | *String*                                                                           | :heavy_check_mark:                                                                 | Organization ID provided when creating the organization                            |
-| `organization_update`                                                              | [T.nilable(Shared::OrganizationUpdate)](../../models/shared/organizationupdate.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `organization_id`                                       | *String*                                                | :heavy_check_mark:                                      | Organization ID provided when creating the organization |
+| `request_body`                                          | T::Hash[Symbol, *Object*]                               | :heavy_minus_sign:                                      | N/A                                                     |
 
 
 ### Response

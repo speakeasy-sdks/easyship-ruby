@@ -279,3 +279,11 @@ Based on:
 - Speakeasy CLI 1.93.3 (2.146.1) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [ruby v2.2.0] .
+
+## 2023-10-07 00:31:58
+### Changes
+Based on:
+- OpenAPI Doc 2023-09 
+- Speakeasy CLI 1.96.1 (2.150.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v2.2.1] .

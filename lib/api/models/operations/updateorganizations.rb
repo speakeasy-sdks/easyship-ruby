@@ -5,8 +5,6 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/organizationupdate'
-require_relative '../shared/organization_single'
 
 module Easyship
   module Operations
@@ -17,13 +15,13 @@ module Easyship
       # Organization ID provided when creating the organization
       field :organization_id, String, { 'path_param': { 'field_name': 'organization_id', 'style': 'simple', 'explode': false } }
 
-      field :organization_update, T.nilable(Shared::OrganizationUpdate), { 'request': { 'media_type': 'application/json' } }
+      field :request_body, T.nilable(T::Hash[Symbol, Object]), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(organization_id: String, organization_update: T.nilable(Shared::OrganizationUpdate)).void }
-      def initialize(organization_id: nil, organization_update: nil)
+      sig { params(organization_id: String, request_body: T.nilable(T::Hash[Symbol, Object])).void }
+      def initialize(organization_id: nil, request_body: nil)
         @organization_id = organization_id
-        @organization_update = organization_update
+        @request_body = request_body
       end
     end
 
@@ -36,12 +34,12 @@ module Easyship
       # HTTP response status code for this operation
       field :status_code, Integer
       # organization successfully updated
-      field :organization_single, T.nilable(Shared::OrganizationSingle)
+      field :organization_single, T.nilable(T::Hash[Symbol, Object])
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, organization_single: T.nilable(Shared::OrganizationSingle), raw_response: T.nilable(Faraday::Response)).void }
+      sig { params(content_type: String, status_code: Integer, organization_single: T.nilable(T::Hash[Symbol, Object]), raw_response: T.nilable(Faraday::Response)).void }
       def initialize(content_type: nil, status_code: nil, organization_single: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code

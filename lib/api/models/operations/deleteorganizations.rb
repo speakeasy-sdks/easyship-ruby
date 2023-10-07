@@ -5,8 +5,6 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/error'
-require_relative '../shared/success'
 
 module Easyship
   module Operations
@@ -33,14 +31,14 @@ module Easyship
       # HTTP response status code for this operation
       field :status_code, Integer
       # failed to delete the organization
-      field :error, T.nilable(Shared::Error)
+      field :error, T.nilable(T::Hash[Symbol, Object])
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # organization successfully deleted
-      field :success, T.nilable(Shared::Success)
+      field :success, T.nilable(T::Hash[Symbol, Object])
 
 
-      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response), success: T.nilable(Shared::Success)).void }
+      sig { params(content_type: String, status_code: Integer, error: T.nilable(T::Hash[Symbol, Object]), raw_response: T.nilable(Faraday::Response), success: T.nilable(T::Hash[Symbol, Object])).void }
       def initialize(content_type: nil, status_code: nil, error: nil, raw_response: nil, success: nil)
         @content_type = content_type
         @status_code = status_code

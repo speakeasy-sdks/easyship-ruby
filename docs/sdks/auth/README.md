@@ -22,10 +22,10 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 
    
-req = Shared::OAuth2IntrospectRequest.new(
-  request=Shared::OAuth2IntrospectRequest.new(
-    token="Intranet",
-  ),
+req = ::.new(
+  request=.new{
+    "South": "Borders",
+  },
 )
     
 res = s.auth.introspect(req)
@@ -38,9 +38,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [Shared::OAuth2IntrospectRequest](../../models/shared/oauth2introspectrequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [T::Hash[Symbol, Object]](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 
 ### Response
@@ -62,13 +62,10 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 
    
-req = Shared::OAuth2ClientCredentialsRequest.new(
-  request=Shared::OAuth2ClientCredentialsRequest.new(
-    client_id="tracksuit Markets",
-    client_secret="McKinney",
-    grant_type=Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
-    scope="Supervisor",
-  ),
+req = ::.new(
+  request=.new{
+    "till": "synergize",
+  },
 )
     
 res = s.auth.retrieve(req)
@@ -81,9 +78,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [Shared::OAuth2ClientCredentialsRequest](../../models/shared/oauth2clientcredentialsrequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [T::Hash[Symbol, Object]](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 
 ### Response
@@ -133,13 +130,10 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 
    
-req = Shared::OAuth2TokenRevokeRequest.new(
-  request=Shared::OAuth2TokenRevokeRequest.new(
-    client_id="Beryllium Henri concerning",
-    client_secret="Wesley BMW",
-    grant_type=Shared::GrantType::CLIENT_CREDENTIALS,
-    token="haptic",
-  ),
+req = ::.new(
+  request=.new{
+    "severe": "Carson",
+  },
 )
     
 res = s.auth.revoke(req)
@@ -152,9 +146,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [Shared::OAuth2TokenRevokeRequest](../../models/shared/oauth2tokenrevokerequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [T::Hash[Symbol, Object]](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 
 ### Response

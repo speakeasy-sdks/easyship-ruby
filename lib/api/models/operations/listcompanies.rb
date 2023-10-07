@@ -5,7 +5,6 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/company_list'
 
 module Easyship
   module Operations
@@ -65,12 +64,12 @@ module Easyship
       # HTTP response status code for this operation
       field :status_code, Integer
       # company list
-      field :company_list, T.nilable(Shared::CompanyList)
+      field :company_list, T.nilable(T::Hash[Symbol, Object])
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, company_list: T.nilable(Shared::CompanyList), raw_response: T.nilable(Faraday::Response)).void }
+      sig { params(content_type: String, status_code: Integer, company_list: T.nilable(T::Hash[Symbol, Object]), raw_response: T.nilable(Faraday::Response)).void }
       def initialize(content_type: nil, status_code: nil, company_list: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code

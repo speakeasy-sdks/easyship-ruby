@@ -5,7 +5,6 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/oauth2tokenresponse'
 
 module Easyship
   module Operations
@@ -18,12 +17,12 @@ module Easyship
       # HTTP response status code for this operation
       field :status_code, Integer
       # Access Token
-      field :o_auth2_token_response, T.nilable(Shared::OAuth2TokenResponse)
+      field :o_auth2_token_response, T.nilable(T::Hash[Symbol, Object])
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, o_auth2_token_response: T.nilable(Shared::OAuth2TokenResponse), raw_response: T.nilable(Faraday::Response)).void }
+      sig { params(content_type: String, status_code: Integer, o_auth2_token_response: T.nilable(T::Hash[Symbol, Object]), raw_response: T.nilable(Faraday::Response)).void }
       def initialize(content_type: nil, status_code: nil, o_auth2_token_response: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
