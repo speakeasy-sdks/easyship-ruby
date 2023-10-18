@@ -17,7 +17,7 @@ module Easyship
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: T.nilable(T::Hash[Symbol, Object])).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::OAuth2IntrospectRequest)).returns(Utils::FieldAugmented) }
     def introspect(request)
       # introspect - Introspect an Access Token
       # Introspect an OAuth 2 Access Token using another Access Token.
@@ -50,14 +50,14 @@ module Easyship
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::OAuth2IntrospectResponse)
           res.o_auth2_introspect_response = out
         end
       end
       res
     end
 
-    sig { params(request: T.nilable(T::Hash[Symbol, Object])).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::OAuth2ClientCredentialsRequest)).returns(Utils::FieldAugmented) }
     def retrieve(request)
       # retrieve - Retrieve an Access Token
       # Retrieve an OAuth 2 Access Token.
@@ -90,7 +90,7 @@ module Easyship
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::OAuth2TokenResponse)
           res.o_auth2_token_response = out
         end
       end
@@ -121,14 +121,14 @@ module Easyship
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::OAuth2TokenInfo)
           res.o_auth2_token_info = out
         end
       end
       res
     end
 
-    sig { params(request: T.nilable(T::Hash[Symbol, Object])).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::OAuth2TokenRevokeRequest)).returns(Utils::FieldAugmented) }
     def revoke(request)
       # revoke - Revoke an Access Token
       # Introspect an OAuth 2 Access Token using another Access Token.

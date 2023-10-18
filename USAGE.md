@@ -6,12 +6,17 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
-req = ::.new(
-  request=.new{
-    "South": "Borders",
-  },
+req = Shared::OAuth2IntrospectRequest.new(
+  request=Shared::OAuth2IntrospectRequest.new(
+    token="South",
+  ),
 )
     
 res = s.auth.introspect(req)

@@ -17,7 +17,7 @@ module Easyship
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: T.nilable(T::Hash[Symbol, Object])).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::CompanyCreate)).returns(Utils::FieldAugmented) }
     def create(request)
       # create - Create a Company
       # Create a new company in specific organization.
@@ -52,12 +52,12 @@ module Easyship
       )
       if r.status == 201
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::CompanySingle)
           res.company_single = out
         end
       elsif r.status == 422
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
         end
       end
@@ -101,15 +101,15 @@ module Easyship
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::CompanyList)
           res.company_list = out
         end
       end
       res
     end
 
-    sig { params(easyship_company_id: String, request_body: T.nilable(T::Hash[Symbol, Object])).returns(Utils::FieldAugmented) }
-    def update(easyship_company_id, request_body = nil)
+    sig { params(easyship_company_id: String, company_update: T.nilable(Shared::CompanyUpdate)).returns(Utils::FieldAugmented) }
+    def update(easyship_company_id, company_update = nil)
       # update - Update a Company
       # Update a company.
       # 
@@ -118,7 +118,7 @@ module Easyship
       request = Operations::UpdateCompaniesRequest.new(
         
         easyship_company_id: easyship_company_id,
-        request_body: request_body
+        company_update: company_update
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -129,7 +129,7 @@ module Easyship
         request
       )
       headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, :company_update, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -153,12 +153,12 @@ module Easyship
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::CompanySingle)
           res.company_single = out
         end
       elsif r.status == 422
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Object])
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
         end
       end

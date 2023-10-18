@@ -5,6 +5,9 @@
 
 require 'sorbet-runtime'
 require 'faraday'
+require_relative '../shared/companyupdate'
+require_relative '../shared/error'
+require_relative '../shared/company_single'
 
 module Easyship
   module Operations
@@ -15,13 +18,13 @@ module Easyship
       # Easyship company ID provided when creating the account
       field :easyship_company_id, String, { 'path_param': { 'field_name': 'easyship_company_id', 'style': 'simple', 'explode': false } }
 
-      field :request_body, T.nilable(T::Hash[Symbol, Object]), { 'request': { 'media_type': 'application/json' } }
+      field :company_update, T.nilable(Shared::CompanyUpdate), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(easyship_company_id: String, request_body: T.nilable(T::Hash[Symbol, Object])).void }
-      def initialize(easyship_company_id: nil, request_body: nil)
+      sig { params(easyship_company_id: String, company_update: T.nilable(Shared::CompanyUpdate)).void }
+      def initialize(easyship_company_id: nil, company_update: nil)
         @easyship_company_id = easyship_company_id
-        @request_body = request_body
+        @company_update = company_update
       end
     end
 
@@ -34,14 +37,14 @@ module Easyship
       # HTTP response status code for this operation
       field :status_code, Integer
       # company successfully updated
-      field :company_single, T.nilable(T::Hash[Symbol, Object])
+      field :company_single, T.nilable(Shared::CompanySingle)
       # invalid params
-      field :error, T.nilable(T::Hash[Symbol, Object])
+      field :error, T.nilable(Shared::Error)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, company_single: T.nilable(T::Hash[Symbol, Object]), error: T.nilable(T::Hash[Symbol, Object]), raw_response: T.nilable(Faraday::Response)).void }
+      sig { params(content_type: String, status_code: Integer, company_single: T.nilable(Shared::CompanySingle), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
       def initialize(content_type: nil, status_code: nil, company_single: nil, error: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
