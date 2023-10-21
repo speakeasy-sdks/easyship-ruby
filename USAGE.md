@@ -15,7 +15,7 @@ s.config_security(
    
 req = Shared::OAuth2IntrospectRequest.new(
   request=Shared::OAuth2IntrospectRequest.new(
-    token="South",
+    token="string",
   ),
 )
     

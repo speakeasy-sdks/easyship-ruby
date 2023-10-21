@@ -37,7 +37,7 @@ s.config_security(
    
 req = Shared::OrganizationCreate.new(
   request=Shared::OrganizationCreate.new(
-    name="online",
+    name="string",
   ),
 )
     
@@ -230,17 +230,17 @@ req = Operations::ListOrganizationCompaniesRequest.new(
   path_params=Operations::ListOrganizationCompaniesRequest.new(
     organization_id="15e2991c-1b2d-485f-b605-3846667071b8",
     company_name="Luettgen Group",
-    easyship_company_id="Frozen",
-    owner_email="finally",
+    easyship_company_id="string",
+    owner_email="string",
     sort_by=Operations::ListOrganizationCompaniesSortBy::COMPANY_NAME,
-    sort_direction=Operations::ListOrganizationCompaniesSortDirection::ASC,
+    sort_direction=Operations::ListOrganizationCompaniesSortDirection::DESC,
   ),
   query_params=Operations::ListOrganizationCompaniesRequest.new(
-    organization_id="565e09a2-9dcb-4e83-a30c-369cc3429fd6",
-    company_name="Windler, Pfeffer and Keeling",
-    easyship_company_id="Cheese",
-    owner_email="Monitored",
-    sort_by=Operations::ListOrganizationCompaniesSortBy::CREATED_AT,
+    organization_id="e206565e-09a2-49dc-be83-a30c369cc342",
+    company_name="Wiegand - Shanahan",
+    easyship_company_id="string",
+    owner_email="string",
+    sort_by=Operations::ListOrganizationCompaniesSortBy::COMPANY_NAME,
     sort_direction=Operations::ListOrganizationCompaniesSortDirection::DESC,
   ),
 )
@@ -295,11 +295,11 @@ req = Operations::UpdateOrganizationsRequest.new(
   path_params=Operations::UpdateOrganizationsRequest.new(
     organization_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
     organization_update=Shared::OrganizationUpdate.new(
-      name="East",
+      name="string",
     ),
   ),
   organization_update=Shared::OrganizationUpdate.new(
-    name="Baht",
+    name="string",
   ),
 )
     

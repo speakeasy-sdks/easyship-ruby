@@ -35,12 +35,12 @@ s.config_security(
 req = Shared::CompanyCreate.new(
   request=Shared::CompanyCreate.new(
     country_alpha2=Shared::CountryAlpha2::KP,
-    name="bluetooth",
-    organization_id="d642c1fc-6fe0-4724-9bcd-d89dc7fa504e",
+    name="string",
+    organization_id="7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
     owner=Shared::CompanyUserCreate.new(
-      email="South",
-      first_name="Daren",
-      last_name="Durgan",
+      email="string",
+      first_name="Destiny",
+      last_name="Turcotte",
     ),
   ),
 )
@@ -89,10 +89,10 @@ s.config_security(
 req = Operations::ListCompaniesRequest.new(
   query_params=Operations::ListCompaniesRequest.new(
     company_name="Bradtke, Lockman and Gerhold",
-    easyship_company_id="Product",
-    organization_id="02eaca40-dbf1-4718-b882-a50805557419",
-    owner_email="gah",
-    sort_by=Operations::ListCompaniesSortBy::CREATED_AT,
+    easyship_company_id="string",
+    organization_id="a429302e-aca4-40db-b171-8b882a508055",
+    owner_email="string",
+    sort_by=Operations::ListCompaniesSortBy::COMPANY_NAME,
     sort_direction=Operations::ListCompaniesSortDirection::ASC,
   ),
 )
@@ -147,20 +147,20 @@ req = Operations::UpdateCompaniesRequest.new(
   path_params=Operations::UpdateCompaniesRequest.new(
     easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
     company_update=Shared::CompanyUpdate.new(
-      name="East",
+      name="string",
       owner=Shared::Owner.new(
-        email="Baht",
-        first_name="Lolita",
-        last_name="Powlowski",
+        email="string",
+        first_name="Adolf",
+        last_name="Kohler",
       ),
     ),
   ),
   company_update=Shared::CompanyUpdate.new(
-    name="guestbook",
+    name="string",
     owner=Shared::Owner.new(
-      email="driver",
-      first_name="Eulah",
-      last_name="Roob",
+      email="string",
+      first_name="Ian",
+      last_name="Russel",
     ),
   ),
 )
