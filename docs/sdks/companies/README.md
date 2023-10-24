@@ -25,17 +25,22 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Shared::CompanyCreate.new(
   request=Shared::CompanyCreate.new(
     country_alpha2=Shared::CountryAlpha2::KP,
-    name="Configuration Money",
-    organization_id="c1fc6fe0-7241-4bcd-989d-c7fa504e0833",
+    name="string",
+    organization_id="7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
     owner=Shared::CompanyUserCreate.new(
-      email="female",
-      first_name="Ricardo",
-      last_name="Hand",
+      email="string",
+      first_name="Destiny",
+      last_name="Turcotte",
     ),
   ),
 )
@@ -74,14 +79,19 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::ListCompaniesRequest.new(
   query_params=Operations::ListCompaniesRequest.new(
     company_name="Bradtke, Lockman and Gerhold",
-    easyship_company_id="Canada that orchid",
-    organization_id="40dbf171-8b88-42a5-8805-557419e790e2",
-    owner_email="green Smart",
+    easyship_company_id="string",
+    organization_id="a429302e-aca4-40db-b171-8b882a508055",
+    owner_email="string",
     sort_by=Operations::ListCompaniesSortBy::COMPANY_NAME,
     sort_direction=Operations::ListCompaniesSortDirection::ASC,
   ),
@@ -97,14 +107,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `company_name`                                                                                             | *T.nilable(String)*                                                                                        | :heavy_minus_sign:                                                                                         | Filter by company name                                                                                     |
-| `easyship_company_id`                                                                                      | *T.nilable(String)*                                                                                        | :heavy_minus_sign:                                                                                         | Filter by Easyship company ID                                                                              |
-| `organization_id`                                                                                          | *T.nilable(String)*                                                                                        | :heavy_minus_sign:                                                                                         | Filter by organization ID                                                                                  |
-| `owner_email`                                                                                              | *T.nilable(String)*                                                                                        | :heavy_minus_sign:                                                                                         | Filter by company owner's email                                                                            |
-| `sort_by`                                                                                                  | [T.nilable(Operations::ListCompaniesSortBy)](../../models/operations/listcompaniessortby.md)               | :heavy_minus_sign:                                                                                         | Sort records by listed columns. Default: `created_at`                                                      |
-| `sort_direction`                                                                                           | [T.nilable(Operations::ListCompaniesSortDirection)](../../models/operations/listcompaniessortdirection.md) | :heavy_minus_sign:                                                                                         | Set the sort direction. Default: `DESC`                                                                    |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `company_name`                                                                                  | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by company name                                                                          |
+| `easyship_company_id`                                                                           | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by Easyship company ID                                                                   |
+| `organization_id`                                                                               | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by organization ID                                                                       |
+| `owner_email`                                                                                   | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by company owner's email                                                                 |
+| `sort_by`                                                                                       | [Operations::ListCompaniesSortBy](../../models/operations/listcompaniessortby.md)               | :heavy_minus_sign:                                                                              | Sort records by listed columns. Default: `created_at`                                           |
+| `sort_direction`                                                                                | [Operations::ListCompaniesSortDirection](../../models/operations/listcompaniessortdirection.md) | :heavy_minus_sign:                                                                              | Set the sort direction. Default: `DESC`                                                         |
 
 
 ### Response
@@ -126,26 +136,31 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::UpdateCompaniesRequest.new(
   path_params=Operations::UpdateCompaniesRequest.new(
     easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
     company_update=Shared::CompanyUpdate.new(
-      name="JBOD",
+      name="string",
       owner=Shared::Owner.new(
-        email="Quality guestbook driver",
-        first_name="Eulah",
-        last_name="Roob",
+        email="string",
+        first_name="Adolf",
+        last_name="Kohler",
       ),
     ),
   ),
   company_update=Shared::CompanyUpdate.new(
-    name="Gasoline Lev",
+    name="string",
     owner=Shared::Owner.new(
-      email="Northwest Fantastic",
-      first_name="Fermin",
-      last_name="O'Connell",
+      email="string",
+      first_name="Ian",
+      last_name="Russel",
     ),
   ),
 )
@@ -160,10 +175,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `easyship_company_id`                                                    | *String*                                                                 | :heavy_check_mark:                                                       | Easyship company ID provided when creating the account                   |
-| `company_update`                                                         | [T.nilable(Shared::CompanyUpdate)](../../models/shared/companyupdate.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `easyship_company_id`                                         | *String*                                                      | :heavy_check_mark:                                            | Easyship company ID provided when creating the account        |
+| `company_update`                                              | [Shared::CompanyUpdate](../../models/shared/companyupdate.md) | :heavy_minus_sign:                                            | N/A                                                           |
 
 
 ### Response

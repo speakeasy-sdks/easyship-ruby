@@ -28,11 +28,16 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Shared::OrganizationCreate.new(
   request=Shared::OrganizationCreate.new(
-    name="bluetooth Extended",
+    name="string",
   ),
 )
     
@@ -71,6 +76,11 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::DeleteOrganizationsRequest.new(
@@ -113,6 +123,11 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::GetOrganizationsRequest.new(
@@ -155,6 +170,11 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::ListOrganizationsRequest.new(
@@ -176,8 +196,8 @@ end
 
 | Parameter                                          | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `page`                                             | *T.nilable(Integer)*                               | :heavy_minus_sign:                                 | Page number to fetch, default: `1`                 |
-| `per_page`                                         | *T.nilable(Integer)*                               | :heavy_minus_sign:                                 | Number of records per page to fetch, default: `20` |
+| `page`                                             | *Integer*                                          | :heavy_minus_sign:                                 | Page number to fetch, default: `1`                 |
+| `per_page`                                         | *Integer*                                          | :heavy_minus_sign:                                 | Number of records per page to fetch, default: `20` |
 
 
 ### Response
@@ -199,24 +219,29 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::ListOrganizationCompaniesRequest.new(
   path_params=Operations::ListOrganizationCompaniesRequest.new(
     organization_id="15e2991c-1b2d-485f-b605-3846667071b8",
     company_name="Luettgen Group",
-    easyship_company_id="unto",
-    owner_email="Hawthorne",
+    easyship_company_id="string",
+    owner_email="string",
     sort_by=Operations::ListOrganizationCompaniesSortBy::COMPANY_NAME,
-    sort_direction=Operations::ListOrganizationCompaniesSortDirection::ASC,
+    sort_direction=Operations::ListOrganizationCompaniesSortDirection::DESC,
   ),
   query_params=Operations::ListOrganizationCompaniesRequest.new(
-    organization_id="5e09a29d-cbe8-43a3-8c36-9cc3429fd6bf",
-    company_name="Keeling, Emmerich and Runolfsson",
-    easyship_company_id="payment Lutetium",
-    owner_email="trump North",
+    organization_id="e206565e-09a2-49dc-be83-a30c369cc342",
+    company_name="Wiegand - Shanahan",
+    easyship_company_id="string",
+    owner_email="string",
     sort_by=Operations::ListOrganizationCompaniesSortBy::COMPANY_NAME,
-    sort_direction=Operations::ListOrganizationCompaniesSortDirection::ASC,
+    sort_direction=Operations::ListOrganizationCompaniesSortDirection::DESC,
   ),
 )
     
@@ -230,14 +255,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                  | *String*                                                                                                                           | :heavy_check_mark:                                                                                                                 | Organization ID provided when creating the organization                                                                            |
-| `company_name`                                                                                                                     | *T.nilable(String)*                                                                                                                | :heavy_minus_sign:                                                                                                                 | Filter by company name                                                                                                             |
-| `easyship_company_id`                                                                                                              | *T.nilable(String)*                                                                                                                | :heavy_minus_sign:                                                                                                                 | Filter by Easyship company ID                                                                                                      |
-| `owner_email`                                                                                                                      | *T.nilable(String)*                                                                                                                | :heavy_minus_sign:                                                                                                                 | Filter by company owner's email                                                                                                    |
-| `sort_by`                                                                                                                          | [T.nilable(Operations::ListOrganizationCompaniesSortBy)](../../models/operations/listorganizationcompaniessortby.md)               | :heavy_minus_sign:                                                                                                                 | Sort records by listed columns. Default: `created_at`                                                                              |
-| `sort_direction`                                                                                                                   | [T.nilable(Operations::ListOrganizationCompaniesSortDirection)](../../models/operations/listorganizationcompaniessortdirection.md) | :heavy_minus_sign:                                                                                                                 | Set the sort direction. Default: `DESC`                                                                                            |
+| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                       | *String*                                                                                                                | :heavy_check_mark:                                                                                                      | Organization ID provided when creating the organization                                                                 |
+| `company_name`                                                                                                          | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | Filter by company name                                                                                                  |
+| `easyship_company_id`                                                                                                   | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | Filter by Easyship company ID                                                                                           |
+| `owner_email`                                                                                                           | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | Filter by company owner's email                                                                                         |
+| `sort_by`                                                                                                               | [Operations::ListOrganizationCompaniesSortBy](../../models/operations/listorganizationcompaniessortby.md)               | :heavy_minus_sign:                                                                                                      | Sort records by listed columns. Default: `created_at`                                                                   |
+| `sort_direction`                                                                                                        | [Operations::ListOrganizationCompaniesSortDirection](../../models/operations/listorganizationcompaniessortdirection.md) | :heavy_minus_sign:                                                                                                      | Set the sort direction. Default: `DESC`                                                                                 |
 
 
 ### Response
@@ -259,17 +284,22 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Operations::UpdateOrganizationsRequest.new(
   path_params=Operations::UpdateOrganizationsRequest.new(
     organization_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
     organization_update=Shared::OrganizationUpdate.new(
-      name="JBOD",
+      name="string",
     ),
   ),
   organization_update=Shared::OrganizationUpdate.new(
-    name="Quality guestbook driver",
+    name="string",
   ),
 )
     
@@ -283,10 +313,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `organization_id`                                                                  | *String*                                                                           | :heavy_check_mark:                                                                 | Organization ID provided when creating the organization                            |
-| `organization_update`                                                              | [T.nilable(Shared::OrganizationUpdate)](../../models/shared/organizationupdate.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `organization_id`                                                       | *String*                                                                | :heavy_check_mark:                                                      | Organization ID provided when creating the organization                 |
+| `organization_update`                                                   | [Shared::OrganizationUpdate](../../models/shared/organizationupdate.md) | :heavy_minus_sign:                                                      | N/A                                                                     |
 
 
 ### Response

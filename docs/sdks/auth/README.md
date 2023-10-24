@@ -20,11 +20,16 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Shared::OAuth2IntrospectRequest.new(
   request=Shared::OAuth2IntrospectRequest.new(
-    token="Intranet",
+    token="string",
   ),
 )
     
@@ -60,14 +65,19 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Shared::OAuth2ClientCredentialsRequest.new(
   request=Shared::OAuth2ClientCredentialsRequest.new(
-    client_id="tracksuit Markets",
-    client_secret="McKinney",
+    client_id="string",
+    client_secret="string",
     grant_type=Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
-    scope="Supervisor",
+    scope="string",
   ),
 )
     
@@ -103,6 +113,11 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
     
 res = s.auth.retrieve_info()
@@ -131,14 +146,19 @@ require_relative easyship_ruby_sdk
 
 
 s = Easyship::Api.new
+s.config_security(
+  security=Shared::Security.new(
+    o_auth2="",
+  )
+)
 
    
 req = Shared::OAuth2TokenRevokeRequest.new(
   request=Shared::OAuth2TokenRevokeRequest.new(
-    client_id="Beryllium Henri concerning",
-    client_secret="Wesley BMW",
+    client_id="string",
+    client_secret="string",
     grant_type=Shared::GrantType::CLIENT_CREDENTIALS,
-    token="haptic",
+    token="string",
   ),
 )
     
