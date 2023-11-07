@@ -10,7 +10,7 @@ require_relative '../shared/pagination'
 module Easyship
   module Shared
 
-    class CompanyListMeta < Easyship::Utils::FieldAugmented
+    class Meta < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Pagination
@@ -30,10 +30,10 @@ module Easyship
 
       field :companies, T.nilable(T::Array[Shared::Company]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('companies') } }
 
-      field :meta, T.nilable(Shared::CompanyListMeta), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('meta') } }
+      field :meta, T.nilable(Shared::Meta), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('meta') } }
 
 
-      sig { params(companies: T.nilable(T::Array[Shared::Company]), meta: T.nilable(Shared::CompanyListMeta)).void }
+      sig { params(companies: T.nilable(T::Array[Shared::Company]), meta: T.nilable(Shared::Meta)).void }
       def initialize(companies: nil, meta: nil)
         @companies = companies
         @meta = meta

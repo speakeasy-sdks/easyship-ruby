@@ -9,7 +9,7 @@ require 'faraday'
 module Easyship
   module Shared
     # OAuth 2 Client Application
-    class OAuth2TokenInfoApplication < Easyship::Utils::FieldAugmented
+    class Application < Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client Application UID
@@ -27,7 +27,7 @@ module Easyship
       extend T::Sig
 
       # OAuth 2 Client Application
-      field :application, T.nilable(Shared::OAuth2TokenInfoApplication), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('application') } }
+      field :application, T.nilable(Shared::Application), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('application') } }
       # OAuth 2 Access Token Creation Time
       field :created_at, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at') } }
       # OAuth 2 Access Token Expiration Time in Seconds
@@ -38,7 +38,7 @@ module Easyship
       field :scope, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('scope') } }
 
 
-      sig { params(application: T.nilable(Shared::OAuth2TokenInfoApplication), created_at: T.nilable(Integer), expires_in: T.nilable(Integer), resource_owner_id: T.nilable(String), scope: T.nilable(T::Array[String])).void }
+      sig { params(application: T.nilable(Shared::Application), created_at: T.nilable(Integer), expires_in: T.nilable(Integer), resource_owner_id: T.nilable(String), scope: T.nilable(T::Array[String])).void }
       def initialize(application: nil, created_at: nil, expires_in: nil, resource_owner_id: nil, scope: nil)
         @application = application
         @created_at = created_at

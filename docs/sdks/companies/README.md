@@ -1,5 +1,5 @@
 # Companies
-(*companies*)
+
 
 ## Overview
 
@@ -92,8 +92,8 @@ req = Operations::ListCompaniesRequest.new(
     easyship_company_id="string",
     organization_id="a429302e-aca4-40db-b171-8b882a508055",
     owner_email="string",
-    sort_by=Operations::ListCompaniesSortBy::COMPANY_NAME,
-    sort_direction=Operations::ListCompaniesSortDirection::ASC,
+    sort_by=Operations::SortBy::COMPANY_NAME,
+    sort_direction=Operations::SortDirection::ASC,
   ),
 )
     
@@ -107,14 +107,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `company_name`                                                                                  | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by company name                                                                          |
-| `easyship_company_id`                                                                           | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by Easyship company ID                                                                   |
-| `organization_id`                                                                               | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by organization ID                                                                       |
-| `owner_email`                                                                                   | *String*                                                                                        | :heavy_minus_sign:                                                                              | Filter by company owner's email                                                                 |
-| `sort_by`                                                                                       | [Operations::ListCompaniesSortBy](../../models/operations/listcompaniessortby.md)               | :heavy_minus_sign:                                                                              | Sort records by listed columns. Default: `created_at`                                           |
-| `sort_direction`                                                                                | [Operations::ListCompaniesSortDirection](../../models/operations/listcompaniessortdirection.md) | :heavy_minus_sign:                                                                              | Set the sort direction. Default: `DESC`                                                         |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `company_name`                                                        | *String*                                                              | :heavy_minus_sign:                                                    | Filter by company name                                                |
+| `easyship_company_id`                                                 | *String*                                                              | :heavy_minus_sign:                                                    | Filter by Easyship company ID                                         |
+| `organization_id`                                                     | *String*                                                              | :heavy_minus_sign:                                                    | Filter by organization ID                                             |
+| `owner_email`                                                         | *String*                                                              | :heavy_minus_sign:                                                    | Filter by company owner's email                                       |
+| `sort_by`                                                             | [Operations::SortBy](../../models/operations/sortby.md)               | :heavy_minus_sign:                                                    | Sort records by listed columns. Default: `created_at`                 |
+| `sort_direction`                                                      | [Operations::SortDirection](../../models/operations/sortdirection.md) | :heavy_minus_sign:                                                    | Set the sort direction. Default: `DESC`                               |
 
 
 ### Response

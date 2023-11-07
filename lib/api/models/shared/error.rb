@@ -8,8 +8,8 @@ require 'faraday'
 
 module Easyship
   module Shared
-    # ErrorErrorType - The type of error returned.
-    class ErrorErrorType < T::Enum
+    # Type - The type of error returned.
+    class Type < T::Enum
       enums do
         INVALID_REQUEST_ERROR = new('invalid_request_error')
         API_ERROR = new('api_error')
@@ -30,10 +30,10 @@ module Easyship
       # An unique ID represent the request.
       field :request_id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('request_id') } }
       # The type of error returned.
-      field :type, T.nilable(Shared::ErrorErrorType), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::ErrorErrorType, true) } }
+      field :type, T.nilable(Shared::Type), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::Type, true) } }
 
 
-      sig { params(code: T.nilable(String), details: T.nilable(T::Array[String]), message: T.nilable(String), request_id: T.nilable(String), type: T.nilable(Shared::ErrorErrorType)).void }
+      sig { params(code: T.nilable(String), details: T.nilable(T::Array[String]), message: T.nilable(String), request_id: T.nilable(String), type: T.nilable(Shared::Type)).void }
       def initialize(code: nil, details: nil, message: nil, request_id: nil, type: nil)
         @code = code
         @details = details

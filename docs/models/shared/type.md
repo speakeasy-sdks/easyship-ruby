@@ -1,4 +1,4 @@
-# ErrorErrorType
+# Type
 
 The type of error returned.
 

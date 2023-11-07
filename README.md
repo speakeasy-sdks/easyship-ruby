@@ -29,15 +29,22 @@ s.config_security(
 )
 
    
-req = Shared::OAuth2IntrospectRequest.new(
-  request=Shared::OAuth2IntrospectRequest.new(
-    token="string",
+req = Shared::CompanyCreate.new(
+  request=Shared::CompanyCreate.new(
+    country_alpha2=Shared::CountryAlpha2::KP,
+    name="string",
+    organization_id="7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
+    owner=Shared::CompanyUserCreate.new(
+      email="string",
+      first_name="Destiny",
+      last_name="Turcotte",
+    ),
   ),
 )
     
-res = s.auth.introspect(req)
+res = s.companies.create(req)
 
-if ! res.o_auth2_introspect_response.nil?
+if ! res.company_single.nil?
   # handle response
 end
 
@@ -48,20 +55,13 @@ end
 ## Available Resources and Operations
 
 
-### [auth](docs/sdks/auth/README.md)
-
-* [introspect](docs/sdks/auth/README.md#introspect) - Introspect an Access Token
-* [retrieve](docs/sdks/auth/README.md#retrieve) - Retrieve an Access Token
-* [retrieve_info](docs/sdks/auth/README.md#retrieve_info) - Retrieve info for the Access Token
-* [revoke](docs/sdks/auth/README.md#revoke) - Revoke an Access Token
-
-### [companies](docs/sdks/companies/README.md)
+### [Companies](docs/sdks/companies/README.md)
 
 * [create](docs/sdks/companies/README.md#create) - Create a Company
 * [list](docs/sdks/companies/README.md#list) - List all Companies
 * [update](docs/sdks/companies/README.md#update) - Update a Company
 
-### [organizations](docs/sdks/organizations/README.md)
+### [Organizations](docs/sdks/organizations/README.md)
 
 * [create](docs/sdks/organizations/README.md#create) - Create an Organization
 * [delete](docs/sdks/organizations/README.md#delete) - Delete an organization
@@ -69,6 +69,13 @@ end
 * [list_all](docs/sdks/organizations/README.md#list_all) - List all Organizations
 * [list_companies](docs/sdks/organizations/README.md#list_companies) - List all Companies of the Organization
 * [update](docs/sdks/organizations/README.md#update) - Update an Organization
+
+### [Auth](docs/sdks/auth/README.md)
+
+* [introspect](docs/sdks/auth/README.md#introspect) - Introspect an Access Token
+* [retrieve](docs/sdks/auth/README.md#retrieve) - Retrieve an Access Token
+* [retrieve_info](docs/sdks/auth/README.md#retrieve_info) - Retrieve info for the Access Token
+* [revoke](docs/sdks/auth/README.md#revoke) - Revoke an Access Token
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->

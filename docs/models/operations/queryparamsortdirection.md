@@ -1,4 +1,4 @@
-# ListCompaniesSortDirection
+# QueryParamSortDirection
 
 Set the sort direction. Default: `DESC`
 

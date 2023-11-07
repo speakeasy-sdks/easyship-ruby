@@ -13,15 +13,22 @@ s.config_security(
 )
 
    
-req = Shared::OAuth2IntrospectRequest.new(
-  request=Shared::OAuth2IntrospectRequest.new(
-    token="string",
+req = Shared::CompanyCreate.new(
+  request=Shared::CompanyCreate.new(
+    country_alpha2=Shared::CountryAlpha2::KP,
+    name="string",
+    organization_id="7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
+    owner=Shared::CompanyUserCreate.new(
+      email="string",
+      first_name="Destiny",
+      last_name="Turcotte",
+    ),
   ),
 )
     
-res = s.auth.introspect(req)
+res = s.companies.create(req)
 
-if ! res.o_auth2_introspect_response.nil?
+if ! res.company_single.nil?
   # handle response
 end
 

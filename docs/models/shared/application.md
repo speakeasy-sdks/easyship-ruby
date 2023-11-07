@@ -1,4 +1,4 @@
-# OAuth2TokenInfoApplication
+# Application
 
 OAuth 2 Client Application
 

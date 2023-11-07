@@ -9,8 +9,8 @@ require_relative '../shared/company_list'
 
 module Easyship
   module Operations
-    # ListOrganizationCompaniesSortBy - Sort records by listed columns. Default: `created_at`
-    class ListOrganizationCompaniesSortBy < T::Enum
+    # QueryParamSortBy - Sort records by listed columns. Default: `created_at`
+    class QueryParamSortBy < T::Enum
       enums do
         COMPANY_NAME = new('company_name')
         CREATED_AT = new('created_at')
@@ -18,8 +18,8 @@ module Easyship
     end
 
 
-    # ListOrganizationCompaniesSortDirection - Set the sort direction. Default: `DESC`
-    class ListOrganizationCompaniesSortDirection < T::Enum
+    # QueryParamSortDirection - Set the sort direction. Default: `DESC`
+    class QueryParamSortDirection < T::Enum
       enums do
         ASC = new('ASC')
         DESC = new('DESC')
@@ -40,12 +40,12 @@ module Easyship
       # Filter by company owner's email
       field :owner_email, T.nilable(String), { 'query_param': { 'field_name': 'owner_email', 'style': 'form', 'explode': true } }
       # Sort records by listed columns. Default: `created_at`
-      field :sort_by, T.nilable(Operations::ListOrganizationCompaniesSortBy), { 'query_param': { 'field_name': 'sort_by', 'style': 'form', 'explode': true } }
+      field :sort_by, T.nilable(Operations::QueryParamSortBy), { 'query_param': { 'field_name': 'sort_by', 'style': 'form', 'explode': true } }
       # Set the sort direction. Default: `DESC`
-      field :sort_direction, T.nilable(Operations::ListOrganizationCompaniesSortDirection), { 'query_param': { 'field_name': 'sort_direction', 'style': 'form', 'explode': true } }
+      field :sort_direction, T.nilable(Operations::QueryParamSortDirection), { 'query_param': { 'field_name': 'sort_direction', 'style': 'form', 'explode': true } }
 
 
-      sig { params(organization_id: String, company_name: T.nilable(String), easyship_company_id: T.nilable(String), owner_email: T.nilable(String), sort_by: T.nilable(Operations::ListOrganizationCompaniesSortBy), sort_direction: T.nilable(Operations::ListOrganizationCompaniesSortDirection)).void }
+      sig { params(organization_id: String, company_name: T.nilable(String), easyship_company_id: T.nilable(String), owner_email: T.nilable(String), sort_by: T.nilable(Operations::QueryParamSortBy), sort_direction: T.nilable(Operations::QueryParamSortDirection)).void }
       def initialize(organization_id: nil, company_name: nil, easyship_company_id: nil, owner_email: nil, sort_by: nil, sort_direction: nil)
         @organization_id = organization_id
         @company_name = company_name
