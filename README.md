@@ -17,6 +17,8 @@ gem specific_install https://github.com/speakeasy-sdks/easyship-ruby
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```ruby
 require_relative easyship_ruby_sdk
 

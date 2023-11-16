@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```ruby
 require_relative easyship_ruby_sdk
 
