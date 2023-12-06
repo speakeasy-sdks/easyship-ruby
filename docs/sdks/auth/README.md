@@ -26,12 +26,8 @@ s.config_security(
   )
 )
 
-   
-req = Shared::OAuth2IntrospectRequest.new(
-  request=Shared::OAuth2IntrospectRequest.new(
-    token="string",
-  ),
-)
+
+req = Shared::OAuth2IntrospectRequest.new()
     
 res = s.auth.introspect(req)
 
@@ -71,14 +67,12 @@ s.config_security(
   )
 )
 
-   
+
 req = Shared::OAuth2ClientCredentialsRequest.new(
-  request=Shared::OAuth2ClientCredentialsRequest.new(
-    client_id="string",
-    client_secret="string",
-    grant_type=Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
-    scope="string",
-  ),
+  client_id="string",
+  client_secret="string",
+  grant_type=Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
+  scope="string",
 )
     
 res = s.auth.retrieve(req)
@@ -152,14 +146,12 @@ s.config_security(
   )
 )
 
-   
+
 req = Shared::OAuth2TokenRevokeRequest.new(
-  request=Shared::OAuth2TokenRevokeRequest.new(
-    client_id="string",
-    client_secret="string",
-    grant_type=Shared::GrantType::CLIENT_CREDENTIALS,
-    token="string",
-  ),
+  client_id="string",
+  client_secret="string",
+  grant_type=Shared::GrantType::CLIENT_CREDENTIALS,
+  token="string",
 )
     
 res = s.auth.revoke(req)

@@ -89,7 +89,6 @@ lib/api/models/shared/oauth2tokenrevokerequest.rb
 lib/api/models/shared/grant_type.rb
 lib/api/models/shared/security.rb
 lib/easyship_ruby_sdk.rb
-USAGE.md
 docs/models/operations/createcompaniesresponse.md
 docs/models/operations/sortby.md
 docs/models/operations/sortdirection.md
@@ -154,4 +153,5 @@ docs/sdks/api/README.md
 docs/sdks/companies/README.md
 docs/sdks/organizations/README.md
 docs/sdks/auth/README.md
+USAGE.md
 .gitattributes

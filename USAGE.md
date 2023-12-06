@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```ruby
 require_relative easyship_ruby_sdk
 
@@ -10,17 +10,15 @@ s.config_security(
   )
 )
 
-   
+
 req = Shared::CompanyCreate.new(
-  request=Shared::CompanyCreate.new(
-    country_alpha2=Shared::CountryAlpha2::KP,
-    name="string",
-    organization_id="7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
-    owner=Shared::CompanyUserCreate.new(
-      email="string",
-      first_name="Destiny",
-      last_name="Turcotte",
-    ),
+  country_alpha2=Shared::CountryAlpha2::KP,
+  name="string",
+  organization_id="7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
+  owner=Shared::CompanyUserCreate.new(
+    email="string",
+    first_name="Destiny",
+    last_name="Turcotte",
   ),
 )
     
@@ -31,4 +29,4 @@ if ! res.company_single.nil?
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
