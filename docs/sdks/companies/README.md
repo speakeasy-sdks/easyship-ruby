@@ -27,7 +27,7 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -79,7 +79,7 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -127,7 +127,7 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
