@@ -12,7 +12,7 @@ module Easyship
   class Api
     extend T::Sig
 
-    attr_accessor :auth, :companies, :organizations
+    attr_accessor :companies, :organizations, :auth
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -74,9 +74,9 @@ module Easyship
 
     sig { void }
     def init_sdks
-      @auth = Auth.new(@sdk_configuration)
       @companies = Companies.new(@sdk_configuration)
       @organizations = Organizations.new(@sdk_configuration)
+      @auth = Auth.new(@sdk_configuration)
     end
   end
 end

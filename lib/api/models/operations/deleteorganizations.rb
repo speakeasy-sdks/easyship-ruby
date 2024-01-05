@@ -30,22 +30,22 @@ module Easyship
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # failed to delete the organization
       field :error, T.nilable(Shared::Error)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # organization successfully deleted
       field :success, T.nilable(Shared::Success)
 
 
-      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response), success: T.nilable(Shared::Success)).void }
-      def initialize(content_type: nil, status_code: nil, error: nil, raw_response: nil, success: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, error: T.nilable(Shared::Error), success: T.nilable(Shared::Success)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil, success: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @error = error
-        @raw_response = raw_response
         @success = success
       end
     end

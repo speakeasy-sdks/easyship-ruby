@@ -1,4 +1,4 @@
-# ListCompaniesSortBy
+# SortBy
 
 Sort records by listed columns. Default: `created_at`
 

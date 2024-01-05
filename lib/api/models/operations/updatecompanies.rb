@@ -34,23 +34,23 @@ module Easyship
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # company successfully updated
       field :company_single, T.nilable(Shared::CompanySingle)
       # invalid params
       field :error, T.nilable(Shared::Error)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, company_single: T.nilable(Shared::CompanySingle), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, company_single: nil, error: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, company_single: T.nilable(Shared::CompanySingle), error: T.nilable(Shared::Error)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, company_single: nil, error: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @company_single = company_single
         @error = error
-        @raw_response = raw_response
       end
     end
   end

@@ -189,7 +189,7 @@ module Easyship
       res
     end
 
-    sig { params(organization_id: String, company_name: T.nilable(String), easyship_company_id: T.nilable(String), owner_email: T.nilable(String), sort_by: T.nilable(Operations::ListOrganizationCompaniesSortBy), sort_direction: T.nilable(Operations::ListOrganizationCompaniesSortDirection)).returns(Utils::FieldAugmented) }
+    sig { params(organization_id: String, company_name: T.nilable(String), easyship_company_id: T.nilable(String), owner_email: T.nilable(String), sort_by: T.nilable(Operations::QueryParamSortBy), sort_direction: T.nilable(Operations::QueryParamSortDirection)).returns(Utils::FieldAugmented) }
     def list_companies(organization_id, company_name = nil, easyship_company_id = nil, owner_email = nil, sort_by = nil, sort_direction = nil)
       # list_companies - List all Companies of the Organization
       # Retrieve a list of companies from a specific organization.

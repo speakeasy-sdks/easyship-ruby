@@ -1,4 +1,4 @@
-# OAuth2IntrospectResponsePlatform
+# Platform
 
 
 ## Fields

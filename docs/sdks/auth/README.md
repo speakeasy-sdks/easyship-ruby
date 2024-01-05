@@ -1,5 +1,5 @@
 # Auth
-(*auth*)
+
 
 ### Available Operations
 
@@ -22,16 +22,12 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-   
-req = Shared::OAuth2IntrospectRequest.new(
-  request=Shared::OAuth2IntrospectRequest.new(
-    token="string",
-  ),
-)
+
+req = Shared::OAuth2IntrospectRequest.new()
     
 res = s.auth.introspect(req)
 
@@ -67,18 +63,16 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-   
+
 req = Shared::OAuth2ClientCredentialsRequest.new(
-  request=Shared::OAuth2ClientCredentialsRequest.new(
-    client_id="string",
-    client_secret="string",
-    grant_type=Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
-    scope="string",
-  ),
+  client_id="string",
+  client_secret="string",
+  grant_type=Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
+  scope="string",
 )
     
 res = s.auth.retrieve(req)
@@ -115,7 +109,7 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -148,18 +142,16 @@ require_relative easyship_ruby_sdk
 s = Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
-    o_auth2="",
+    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-   
+
 req = Shared::OAuth2TokenRevokeRequest.new(
-  request=Shared::OAuth2TokenRevokeRequest.new(
-    client_id="string",
-    client_secret="string",
-    grant_type=Shared::GrantType::CLIENT_CREDENTIALS,
-    token="string",
-  ),
+  client_id="string",
+  client_secret="string",
+  grant_type=Shared::GrantType::CLIENT_CREDENTIALS,
+  token="string",
 )
     
 res = s.auth.revoke(req)

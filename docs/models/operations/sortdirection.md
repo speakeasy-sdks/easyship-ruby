@@ -1,4 +1,4 @@
-# ListOrganizationCompaniesSortDirection
+# SortDirection
 
 Set the sort direction. Default: `DESC`
 
