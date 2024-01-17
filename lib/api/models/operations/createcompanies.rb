@@ -11,7 +11,7 @@ require_relative '../shared/company_single'
 module Easyship
   module Operations
 
-    class CreateCompaniesResponse < Easyship::Utils::FieldAugmented
+    class CreateCompaniesResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -9,11 +9,11 @@ require 'faraday'
 module Easyship
   module Shared
 
-    class OrganizationUpdate < Easyship::Utils::FieldAugmented
+    class OrganizationUpdate < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Organization name
-      field :name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name') } }
+      field :name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('name') } }
 
 
       sig { params(name: T.nilable(String)).void }

@@ -11,17 +11,17 @@ require_relative '../shared/companyusercreate'
 module Easyship
   module Shared
 
-    class CompanyCreate < Easyship::Utils::FieldAugmented
+    class CompanyCreate < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Country Code in Alpha-2 format (ISO 3166-1)
-      field :country_alpha2, Shared::CountryAlpha2, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('country_alpha2'), 'decoder': Utils.enum_from_string(Shared::CountryAlpha2, false) } }
+      field :country_alpha2, Shared::CountryAlpha2, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('country_alpha2'), 'decoder': Utils.enum_from_string(Shared::CountryAlpha2, false) } }
       # Company name
-      field :name, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name') } }
+      field :name, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('name') } }
       # Organization ID
-      field :organization_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('organization_id') } }
+      field :organization_id, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('organization_id') } }
 
-      field :owner, Shared::CompanyUserCreate, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('owner') } }
+      field :owner, Shared::CompanyUserCreate, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('owner') } }
 
 
       sig { params(country_alpha2: Shared::CountryAlpha2, name: String, organization_id: String, owner: Shared::CompanyUserCreate).void }

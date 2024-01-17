@@ -10,17 +10,17 @@ require_relative '../shared/grant_type'
 module Easyship
   module Shared
     # OAuth 2 Token Revoke Request
-    class OAuth2TokenRevokeRequest < Easyship::Utils::FieldAugmented
+    class OAuth2TokenRevokeRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client ID
-      field :client_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('client_id') } }
+      field :client_id, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('client_id') } }
       # OAuth 2 Client Secret
-      field :client_secret, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('client_secret') } }
+      field :client_secret, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('client_secret') } }
       # OAuth 2 Grant Type
-      field :grant_type, Shared::GrantType, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('grant_type'), 'decoder': Utils.enum_from_string(Shared::GrantType, false) } }
+      field :grant_type, Shared::GrantType, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('grant_type'), 'decoder': Utils.enum_from_string(Shared::GrantType, false) } }
       # OAuth 2 Access Token
-      field :token, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('token') } }
+      field :token, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('token') } }
 
 
       sig { params(client_id: String, client_secret: String, grant_type: Shared::GrantType, token: String).void }

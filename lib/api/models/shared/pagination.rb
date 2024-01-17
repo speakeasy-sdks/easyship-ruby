@@ -9,15 +9,15 @@ require 'faraday'
 module Easyship
   module Shared
     # Pagination
-    class Pagination < Easyship::Utils::FieldAugmented
+    class Pagination < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # The total number of items. The `null` value is used with countless pagination (used for faster response on large datasets, like shipments).
-      field :count, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('count') } }
+      field :count, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('count') } }
 
-      field :next_, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('next') } }
+      field :next_, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('next') } }
       # Current page
-      field :page, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('page') } }
+      field :page, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('page') } }
 
 
       sig { params(count: T.nilable(Integer), next_: T.nilable(Integer), page: T.nilable(Integer)).void }

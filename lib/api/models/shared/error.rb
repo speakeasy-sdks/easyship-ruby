@@ -18,19 +18,19 @@ module Easyship
 
 
 
-    class ErrorError < Easyship::Utils::FieldAugmented
+    class ErrorError < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # A short code that represents the error.
-      field :code, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('code') } }
+      field :code, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('code') } }
       # An array of human-readable messages providing detailed information about the error.
-      field :details, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('details') } }
+      field :details, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('details') } }
       # A human-readable message providing brief information about the error.
-      field :message, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('message') } }
+      field :message, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('message') } }
       # An unique ID represent the request.
-      field :request_id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('request_id') } }
+      field :request_id, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('request_id') } }
       # The type of error returned.
-      field :type, T.nilable(Shared::Type), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::Type, true) } }
+      field :type, T.nilable(Shared::Type), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::Type, true) } }
 
 
       sig { params(code: T.nilable(String), details: T.nilable(T::Array[String]), message: T.nilable(String), request_id: T.nilable(String), type: T.nilable(Shared::Type)).void }
@@ -44,11 +44,11 @@ module Easyship
     end
 
     # Error
-    class Error < Easyship::Utils::FieldAugmented
+    class Error < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :error, T.nilable(Shared::ErrorError), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('error') } }
+      field :error, T.nilable(Shared::ErrorError), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('error') } }
 
 
       sig { params(error: T.nilable(Shared::ErrorError)).void }

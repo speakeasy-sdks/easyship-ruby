@@ -17,19 +17,19 @@ module Easyship
 
 
     # OAuth 2 Token Response
-    class OAuth2TokenResponse < Easyship::Utils::FieldAugmented
+    class OAuth2TokenResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Access Token
-      field :access_token, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('access_token') } }
+      field :access_token, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('access_token') } }
       # OAuth 2 Access Token Creation Time
-      field :created_at, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at') } }
+      field :created_at, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('created_at') } }
       # OAuth 2 Access Token Expiration Time in Seconds
-      field :expires_in, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('expires_in') } }
+      field :expires_in, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('expires_in') } }
       # OAuth 2 Scopes separated by space. All Enterprise and Public API scopes are supported, but they must be allowed on the Enterprise API Client Application on the Dashboard.
-      field :scope, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('scope') } }
+      field :scope, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('scope') } }
       # OAuth 2 Token Type
-      field :token_type, T.nilable(Shared::OAuth2TokenResponseTokenType), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('token_type'), 'decoder': Utils.enum_from_string(Shared::OAuth2TokenResponseTokenType, true) } }
+      field :token_type, T.nilable(Shared::OAuth2TokenResponseTokenType), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('token_type'), 'decoder': Utils.enum_from_string(Shared::OAuth2TokenResponseTokenType, true) } }
 
 
       sig { params(access_token: T.nilable(String), created_at: T.nilable(Integer), expires_in: T.nilable(Integer), scope: T.nilable(String), token_type: T.nilable(Shared::OAuth2TokenResponseTokenType)).void }

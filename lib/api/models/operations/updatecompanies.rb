@@ -12,7 +12,7 @@ require_relative '../shared/company_single'
 module Easyship
   module Operations
 
-    class UpdateCompaniesRequest < Easyship::Utils::FieldAugmented
+    class UpdateCompaniesRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Easyship company ID provided when creating the account
@@ -29,7 +29,7 @@ module Easyship
     end
 
 
-    class UpdateCompaniesResponse < Easyship::Utils::FieldAugmented
+    class UpdateCompaniesResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

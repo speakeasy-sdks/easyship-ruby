@@ -10,7 +10,7 @@ require_relative '../shared/oauth2introspectresponse'
 module Easyship
   module Operations
 
-    class IntrospectTokenResponse < Easyship::Utils::FieldAugmented
+    class IntrospectTokenResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

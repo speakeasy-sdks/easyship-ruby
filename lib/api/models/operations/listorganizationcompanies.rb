@@ -28,7 +28,7 @@ module Easyship
 
 
 
-    class ListOrganizationCompaniesRequest < Easyship::Utils::FieldAugmented
+    class ListOrganizationCompaniesRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Organization ID provided when creating the organization
@@ -57,7 +57,7 @@ module Easyship
     end
 
 
-    class ListOrganizationCompaniesResponse < Easyship::Utils::FieldAugmented
+    class ListOrganizationCompaniesResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

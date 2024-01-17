@@ -19,7 +19,7 @@ Introspect an OAuth 2 Access Token using another Access Token.
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
@@ -60,7 +60,7 @@ Retrieve an OAuth 2 Access Token.
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
@@ -106,7 +106,7 @@ Retrieve an OAuth 2 Access Token information.
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
@@ -139,7 +139,7 @@ Introspect an OAuth 2 Access Token using another Access Token.
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",

@@ -9,15 +9,15 @@ require 'faraday'
 module Easyship
   module Shared
 
-    class Owner < Easyship::Utils::FieldAugmented
+    class Owner < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Email address
-      field :email, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('email') } }
+      field :email, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('email') } }
       # First name of the company owner
-      field :first_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('first_name') } }
+      field :first_name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('first_name') } }
       # Last name of the company owner
-      field :last_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('last_name') } }
+      field :last_name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('last_name') } }
 
 
       sig { params(email: T.nilable(String), first_name: T.nilable(String), last_name: T.nilable(String)).void }

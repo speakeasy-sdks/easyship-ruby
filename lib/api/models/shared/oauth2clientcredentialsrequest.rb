@@ -17,17 +17,17 @@ module Easyship
 
 
     # OAuth 2 Client Credentials Request
-    class OAuth2ClientCredentialsRequest < Easyship::Utils::FieldAugmented
+    class OAuth2ClientCredentialsRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client ID
-      field :client_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('client_id') } }
+      field :client_id, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('client_id') } }
       # OAuth 2 Client Secret
-      field :client_secret, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('client_secret') } }
+      field :client_secret, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('client_secret') } }
       # OAuth 2 Grant Type
-      field :grant_type, Shared::OAuth2ClientCredentialsRequestGrantType, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('grant_type'), 'decoder': Utils.enum_from_string(Shared::OAuth2ClientCredentialsRequestGrantType, false) } }
+      field :grant_type, Shared::OAuth2ClientCredentialsRequestGrantType, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('grant_type'), 'decoder': Utils.enum_from_string(Shared::OAuth2ClientCredentialsRequestGrantType, false) } }
       # OAuth 2 Scopes separated by space. All Enterprise and Public API scopes are supported, but they must be allowed on the Enterprise API Client Application on the Dashboard.
-      field :scope, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('scope') } }
+      field :scope, String, { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('scope') } }
 
 
       sig { params(client_id: String, client_secret: String, grant_type: Shared::OAuth2ClientCredentialsRequestGrantType, scope: String).void }

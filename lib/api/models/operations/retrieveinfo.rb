@@ -10,7 +10,7 @@ require_relative '../shared/oauth2tokeninfo'
 module Easyship
   module Operations
 
-    class RetrieveInfoResponse < Easyship::Utils::FieldAugmented
+    class RetrieveInfoResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

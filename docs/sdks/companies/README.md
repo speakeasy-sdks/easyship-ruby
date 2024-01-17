@@ -24,7 +24,7 @@ Required authorization scope: `enterprise.company`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
@@ -76,15 +76,13 @@ Required authorization scope: `enterprise.company`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::ListCompaniesRequest.new()
     
 res = s.companies.list(company_name="string", easyship_company_id="string", organization_id="c184a429-302e-4aca-80db-f1718b882a50", owner_email="string", sort_by=Operations::SortBy::CREATED_AT, sort_direction=Operations::SortDirection::ASC)
 
@@ -124,22 +122,15 @@ Required authorization scope: `enterprise.company`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::UpdateCompaniesRequest.new(
-  easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
-  company_update=Shared::CompanyUpdate.new(
-    owner=Shared::Owner.new(),
-  ),
-)
     
-res = s.companies.update(easyship_company_id="077cabf6-805c-45ca-b187-14355ad7d4e1", company_update=Shared::CompanyUpdate.new(
+res = s.companies.update(easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54", company_update=Shared::CompanyUpdate.new(
     owner=Shared::Owner.new(),
   ))
 

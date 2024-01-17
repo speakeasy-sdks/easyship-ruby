@@ -9,13 +9,13 @@ require 'faraday'
 module Easyship
   module Shared
 
-    class RevokeAccessTokenResponse < Easyship::Utils::FieldAugmented
+    class RevokeAccessTokenResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :message, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('message') } }
+      field :message, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('message') } }
 
-      field :status, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('status') } }
+      field :status, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('status') } }
 
 
       sig { params(message: T.nilable(String), status: T.nilable(Integer)).void }

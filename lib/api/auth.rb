@@ -97,7 +97,7 @@ module Easyship
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::Easyship::Utils::FieldAugmented) }
     def retrieve_info
       # retrieve_info - Retrieve info for the Access Token
       # Retrieve an OAuth 2 Access Token information.

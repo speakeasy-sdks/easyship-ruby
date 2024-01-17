@@ -28,7 +28,7 @@ module Easyship
 
 
 
-    class ListCompaniesRequest < Easyship::Utils::FieldAugmented
+    class ListCompaniesRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Filter by company name
@@ -57,7 +57,7 @@ module Easyship
     end
 
 
-    class ListCompaniesResponse < Easyship::Utils::FieldAugmented
+    class ListCompaniesResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

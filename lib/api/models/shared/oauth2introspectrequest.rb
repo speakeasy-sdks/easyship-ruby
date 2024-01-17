@@ -9,11 +9,11 @@ require 'faraday'
 module Easyship
   module Shared
     # OAuth 2 Introspect Request
-    class OAuth2IntrospectRequest < Easyship::Utils::FieldAugmented
+    class OAuth2IntrospectRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Access Token
-      field :token, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('token') } }
+      field :token, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('token') } }
 
 
       sig { params(token: T.nilable(String)).void }

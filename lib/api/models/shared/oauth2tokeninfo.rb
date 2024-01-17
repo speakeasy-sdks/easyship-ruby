@@ -9,11 +9,11 @@ require 'faraday'
 module Easyship
   module Shared
     # OAuth 2 Client Application
-    class Application < Easyship::Utils::FieldAugmented
+    class Application < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client Application UID
-      field :uid, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('uid') } }
+      field :uid, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('uid') } }
 
 
       sig { params(uid: T.nilable(String)).void }
@@ -23,19 +23,19 @@ module Easyship
     end
 
     # OAuth 2 Token Info
-    class OAuth2TokenInfo < Easyship::Utils::FieldAugmented
+    class OAuth2TokenInfo < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # OAuth 2 Client Application
-      field :application, T.nilable(Shared::Application), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('application') } }
+      field :application, T.nilable(Shared::Application), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('application') } }
       # OAuth 2 Access Token Creation Time
-      field :created_at, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at') } }
+      field :created_at, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('created_at') } }
       # OAuth 2 Access Token Expiration Time in Seconds
-      field :expires_in, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('expires_in') } }
+      field :expires_in, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('expires_in') } }
       # OAuth 2 Resource Owner ID. Always `null` when using `client_credentials` grant type.
-      field :resource_owner_id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('resource_owner_id') } }
+      field :resource_owner_id, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('resource_owner_id') } }
       # OAuth 2 Scopes
-      field :scope, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('scope') } }
+      field :scope, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('scope') } }
 
 
       sig { params(application: T.nilable(Shared::Application), created_at: T.nilable(Integer), expires_in: T.nilable(Integer), resource_owner_id: T.nilable(String), scope: T.nilable(T::Array[String])).void }

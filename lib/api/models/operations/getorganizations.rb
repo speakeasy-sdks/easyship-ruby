@@ -10,7 +10,7 @@ require_relative '../shared/organization_single'
 module Easyship
   module Operations
 
-    class GetOrganizationsRequest < Easyship::Utils::FieldAugmented
+    class GetOrganizationsRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Organization ID provided when creating the organization
@@ -24,7 +24,7 @@ module Easyship
     end
 
 
-    class GetOrganizationsResponse < Easyship::Utils::FieldAugmented
+    class GetOrganizationsResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

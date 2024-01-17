@@ -7,7 +7,7 @@ require 'faraday'
 require 'faraday/multipart'
 require 'sorbet-runtime'
 
-module OpenApiSDK
+module Easyship
   extend T::Sig
 
 
@@ -16,7 +16,7 @@ module OpenApiSDK
   ].freeze
   # Contains the list of servers available to the SDK
 
-  class SDKConfiguration < OpenApiSDK::Utils::FieldAugmented
+  class SDKConfiguration < ::Easyship::Utils::FieldAugmented
     extend T::Sig
 
     field :client, T.nilable(Faraday::Connection)
@@ -36,9 +36,9 @@ module OpenApiSDK
       @server_idx = server_idx.nil? ? 0 : server_idx
       @language = 'ruby'
       @openapi_doc_version = '2023-09'
-      @sdk_version = '3.1.1'
-      @gen_version = '2.231.0'
-      @user_agent = 'speakeasy-sdk/ruby 3.1.1 2.231.0 2023-09 easyship_ruby_sdk'
+      @sdk_version = '3.1.2'
+      @gen_version = '2.234.3'
+      @user_agent = 'speakeasy-sdk/ruby 3.1.2 2.234.3 2023-09 easyship_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

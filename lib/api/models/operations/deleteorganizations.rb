@@ -11,7 +11,7 @@ require_relative '../shared/success'
 module Easyship
   module Operations
 
-    class DeleteOrganizationsRequest < Easyship::Utils::FieldAugmented
+    class DeleteOrganizationsRequest < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Organization ID provided when creating the organization
@@ -25,7 +25,7 @@ module Easyship
     end
 
 
-    class DeleteOrganizationsResponse < Easyship::Utils::FieldAugmented
+    class DeleteOrganizationsResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

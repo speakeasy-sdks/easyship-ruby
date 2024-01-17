@@ -10,11 +10,11 @@ require_relative '../shared/company'
 module Easyship
   module Shared
     # Account Detail
-    class CompanySingle < Easyship::Utils::FieldAugmented
+    class CompanySingle < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :company, T.nilable(Shared::Company), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('company') } }
+      field :company, T.nilable(Shared::Company), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('company') } }
 
 
       sig { params(company: T.nilable(Shared::Company)).void }

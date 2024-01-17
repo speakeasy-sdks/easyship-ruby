@@ -10,7 +10,7 @@ require_relative '../shared/revokeaccesstokenresponse'
 module Easyship
   module Operations
 
-    class RevokeTokenResponse < Easyship::Utils::FieldAugmented
+    class RevokeTokenResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

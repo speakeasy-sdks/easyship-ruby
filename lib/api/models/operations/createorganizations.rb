@@ -10,7 +10,7 @@ require_relative '../shared/organization_single'
 module Easyship
   module Operations
 
-    class CreateOrganizationsResponse < Easyship::Utils::FieldAugmented
+    class CreateOrganizationsResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -10,13 +10,13 @@ require_relative '../shared/token_type'
 module Easyship
   module Shared
 
-    class Platform < Easyship::Utils::FieldAugmented
+    class Platform < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Platform ID
-      field :id, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
+      field :id, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('id') } }
       # Platform Name
-      field :name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name') } }
+      field :name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('name') } }
 
 
       sig { params(id: T.nilable(Integer), name: T.nilable(String)).void }
@@ -27,25 +27,25 @@ module Easyship
     end
 
     # OAuth 2 Introspect Response
-    class OAuth2IntrospectResponse < Easyship::Utils::FieldAugmented
+    class OAuth2IntrospectResponse < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :active, T.nilable(T::Boolean), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('active') } }
+      field :active, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('active') } }
       # OAuth 2 Client ID
-      field :client_id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('client_id') } }
+      field :client_id, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('client_id') } }
       # Easyship Company ID
-      field :easyship_company_id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('easyship_company_id') } }
+      field :easyship_company_id, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('easyship_company_id') } }
 
-      field :exp, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('exp') } }
+      field :exp, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('exp') } }
 
-      field :iat, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('iat') } }
+      field :iat, T.nilable(Integer), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('iat') } }
 
-      field :platform, T.nilable(Shared::Platform), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('platform') } }
+      field :platform, T.nilable(Shared::Platform), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('platform') } }
       # OAuth 2 Scopes separated by space. All Enterprise and Public API scopes are supported, but they must be allowed on the Enterprise API Client Application on the Dashboard.
-      field :scope, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('scope') } }
+      field :scope, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('scope') } }
       # OAuth 2 Token Type
-      field :token_type, T.nilable(Shared::TokenType), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('token_type'), 'decoder': Utils.enum_from_string(Shared::TokenType, true) } }
+      field :token_type, T.nilable(Shared::TokenType), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('token_type'), 'decoder': Utils.enum_from_string(Shared::TokenType, true) } }
 
 
       sig { params(active: T.nilable(T::Boolean), client_id: T.nilable(String), easyship_company_id: T.nilable(String), exp: T.nilable(Integer), iat: T.nilable(Integer), platform: T.nilable(Shared::Platform), scope: T.nilable(String), token_type: T.nilable(Shared::TokenType)).void }

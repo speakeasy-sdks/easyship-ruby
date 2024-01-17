@@ -10,11 +10,11 @@ require_relative '../shared/pagination'
 module Easyship
   module Shared
 
-    class OrganizationListMeta < Easyship::Utils::FieldAugmented
+    class OrganizationListMeta < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Pagination
-      field :pagination, T.nilable(Shared::Pagination), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('pagination') } }
+      field :pagination, T.nilable(Shared::Pagination), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('pagination') } }
 
 
       sig { params(pagination: T.nilable(Shared::Pagination)).void }
@@ -24,13 +24,13 @@ module Easyship
     end
 
     # List of Organizations
-    class OrganizationList < Easyship::Utils::FieldAugmented
+    class OrganizationList < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :meta, T.nilable(Shared::OrganizationListMeta), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('meta') } }
+      field :meta, T.nilable(Shared::OrganizationListMeta), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('meta') } }
 
-      field :organizations, T.nilable(T::Array[Shared::Organization]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('organizations') } }
+      field :organizations, T.nilable(T::Array[Shared::Organization]), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('organizations') } }
 
 
       sig { params(meta: T.nilable(Shared::OrganizationListMeta), organizations: T.nilable(T::Array[Shared::Organization])).void }

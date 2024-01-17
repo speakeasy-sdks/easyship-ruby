@@ -11,15 +11,15 @@ require_relative '../shared/organization'
 module Easyship
   module Shared
 
-    class CompanyOwner < Easyship::Utils::FieldAugmented
+    class CompanyOwner < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Email address
-      field :email, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('email') } }
+      field :email, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('email') } }
       # First name of the company owner
-      field :first_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('first_name') } }
+      field :first_name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('first_name') } }
       # Last name of the company owner
-      field :last_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('last_name') } }
+      field :last_name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('last_name') } }
 
 
       sig { params(email: T.nilable(String), first_name: T.nilable(String), last_name: T.nilable(String)).void }
@@ -31,23 +31,23 @@ module Easyship
     end
 
 
-    class Company < Easyship::Utils::FieldAugmented
+    class Company < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
       # Country Code in Alpha-2 format (ISO 3166-1)
-      field :country_alpha2, T.nilable(Shared::CountryAlpha2), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('country_alpha2'), 'decoder': Utils.enum_from_string(Shared::CountryAlpha2, true) } }
+      field :country_alpha2, T.nilable(Shared::CountryAlpha2), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('country_alpha2'), 'decoder': Utils.enum_from_string(Shared::CountryAlpha2, true) } }
       # Date and time when the company was created
-      field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
       # Readable identifier prefixed with ES (Easyship) and destination country code
-      field :easyship_company_id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('easyship_company_id') } }
+      field :easyship_company_id, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('easyship_company_id') } }
       # Company name
-      field :name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name') } }
+      field :name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('name') } }
 
-      field :organization, T.nilable(Shared::Organization), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('organization') } }
+      field :organization, T.nilable(Shared::Organization), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('organization') } }
 
-      field :owner, T.nilable(Shared::CompanyOwner), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('owner') } }
+      field :owner, T.nilable(Shared::CompanyOwner), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('owner') } }
       # Date and time when the company was last updated
-      field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
       sig { params(country_alpha2: T.nilable(Shared::CountryAlpha2), created_at: T.nilable(DateTime), easyship_company_id: T.nilable(String), name: T.nilable(String), organization: T.nilable(Shared::Organization), owner: T.nilable(Shared::CompanyOwner), updated_at: T.nilable(DateTime)).void }

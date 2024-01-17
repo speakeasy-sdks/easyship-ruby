@@ -27,7 +27,7 @@ Required authorization scope: `enterprise.organization`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
@@ -73,19 +73,15 @@ Required authorization scope: `enterprise.organization`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::DeleteOrganizationsRequest.new(
-  organization_id="8db863f6-ef9b-413a-8a70-cb816b33de6b",
-)
     
-res = s.organizations.delete(organization_id="c73b0ed8-237a-4f3f-aef4-283e9b9ee4b8")
+res = s.organizations.delete(organization_id="8db863f6-ef9b-413a-8a70-cb816b33de6b")
 
 if ! res.success.nil?
   # handle response
@@ -118,19 +114,15 @@ Required authorization scope: `enterprise.organization`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::GetOrganizationsRequest.new(
-  organization_id="b18d8d81-fd7b-4764-a31e-475cb1f36591",
-)
     
-res = s.organizations.get(organization_id="58ccc65b-c928-4154-952e-30c048b8c2b5")
+res = s.organizations.get(organization_id="b18d8d81-fd7b-4764-a31e-475cb1f36591")
 
 if ! res.organization_single.nil?
   # handle response
@@ -163,15 +155,13 @@ Required authorization scope: `enterprise.organization`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::ListOrganizationsRequest.new()
     
 res = s.organizations.list_all(page=562616, per_page=539434)
 
@@ -207,19 +197,15 @@ Required authorization scope: `enterprise.company`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::ListOrganizationCompaniesRequest.new(
-  organization_id="15e2991c-1b2d-485f-b605-3846667071b8",
-)
     
-res = s.organizations.list_companies(organization_id="18d3fe20-6565-4e09-a29d-cbe83a30c369", company_name="string", easyship_company_id="string", owner_email="string", sort_by=Operations::QueryParamSortBy::CREATED_AT, sort_direction=Operations::QueryParamSortDirection::DESC)
+res = s.organizations.list_companies(organization_id="15e2991c-1b2d-485f-b605-3846667071b8", company_name="string", easyship_company_id="string", owner_email="string", sort_by=Operations::QueryParamSortBy::COMPANY_NAME, sort_direction=Operations::QueryParamSortDirection::DESC)
 
 if ! res.company_list.nil?
   # handle response
@@ -257,20 +243,15 @@ Required authorization scope: `enterprise.organization`
 require_relative easyship_ruby_sdk
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
   security=Shared::Security.new(
     o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-
-req = Operations::UpdateOrganizationsRequest.new(
-  organization_id="d0905bf4-aa77-4f20-8e77-54c352acfe54",
-  organization_update=Shared::OrganizationUpdate.new(),
-)
     
-res = s.organizations.update(organization_id="077cabf6-805c-45ca-b187-14355ad7d4e1", organization_update=Shared::OrganizationUpdate.new())
+res = s.organizations.update(organization_id="d0905bf4-aa77-4f20-8e77-54c352acfe54", organization_update=Shared::OrganizationUpdate.new())
 
 if ! res.organization_single.nil?
   # handle response

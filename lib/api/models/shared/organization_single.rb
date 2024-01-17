@@ -10,11 +10,11 @@ require_relative '../shared/organization'
 module Easyship
   module Shared
     # Organizations detail
-    class OrganizationSingle < Easyship::Utils::FieldAugmented
+    class OrganizationSingle < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :organization, T.nilable(Shared::Organization), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('organization') } }
+      field :organization, T.nilable(Shared::Organization), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('organization') } }
 
 
       sig { params(organization: T.nilable(Shared::Organization)).void }

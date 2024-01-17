@@ -9,7 +9,7 @@ require 'faraday'
 module Easyship
   module Shared
 
-    class Security < Easyship::Utils::FieldAugmented
+    class Security < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 

@@ -9,17 +9,17 @@ require 'faraday'
 module Easyship
   module Shared
 
-    class Organization < Easyship::Utils::FieldAugmented
+    class Organization < ::Easyship::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :created_at, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at') } }
+      field :created_at, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('created_at') } }
       # Organization ID
-      field :id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
+      field :id, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('id') } }
       # Organization name
-      field :name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name') } }
+      field :name, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('name') } }
 
-      field :updated_at, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updated_at') } }
+      field :updated_at, T.nilable(String), { 'format_json': { 'letter_case': ::Easyship::Utils.field_name('updated_at') } }
 
 
       sig { params(created_at: T.nilable(String), id: T.nilable(String), name: T.nilable(String), updated_at: T.nilable(String)).void }
