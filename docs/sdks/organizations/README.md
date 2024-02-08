@@ -24,19 +24,19 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
 
 req = ::Easyship::Shared::OrganizationCreate.new(
-  name="string",
+  name: "string",
 )
     
 res = s.organizations.create(req)
@@ -70,13 +70,13 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -111,13 +111,13 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -152,13 +152,13 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -194,13 +194,13 @@ Required authorization scope: `enterprise.company`
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -240,13 +240,13 @@ Required authorization scope: `enterprise.organization`
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 

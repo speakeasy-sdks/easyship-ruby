@@ -16,13 +16,13 @@ Introspect an OAuth 2 Access Token using another Access Token.
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -57,22 +57,22 @@ Retrieve an OAuth 2 Access Token.
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
 
 req = ::Easyship::Shared::OAuth2ClientCredentialsRequest.new(
-  client_id="string",
-  client_secret="string",
-  grant_type=::Easyship::Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
-  scope="string",
+  client_id: "string",
+  client_secret: "string",
+  grant_type: ::Easyship::Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
+  scope: "string",
 )
     
 res = s.auth.retrieve(req)
@@ -103,13 +103,13 @@ Retrieve an OAuth 2 Access Token information.
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
@@ -136,22 +136,22 @@ Introspect an OAuth 2 Access Token using another Access Token.
 ### Example Usage
 
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
 s = ::Easyship::Api.new
 s.config_security(
-  security=::Easyship::Shared::Security.new(
-    o_auth2="Bearer <YOUR_ACCESS_TOKEN_HERE>",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
 
 req = ::Easyship::Shared::OAuth2TokenRevokeRequest.new(
-  client_id="string",
-  client_secret="string",
-  grant_type=::Easyship::Shared::GrantType::CLIENT_CREDENTIALS,
-  token="string",
+  client_id: "string",
+  client_secret: "string",
+  grant_type: ::Easyship::Shared::GrantType::CLIENT_CREDENTIALS,
+  token: "string",
 )
     
 res = s.auth.revoke(req)
