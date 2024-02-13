@@ -130,9 +130,7 @@ s.config_security(
 )
 
     
-res = s.companies.update(easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54", company_update=::Easyship::Shared::CompanyUpdate.new(
-    owner: ::Easyship::Shared::Owner.new(),
-  ))
+res = s.companies.update(easyship_company_id="d0905bf4-aa77-4f20-8e77-54c352acfe54", company_update=::Easyship::Shared::CompanyUpdate.new())
 
 if ! res.company_single.nil?
   # handle response
