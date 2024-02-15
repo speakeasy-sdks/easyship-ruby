@@ -34,10 +34,10 @@ s.config_security(
 
 req = ::Easyship::Shared::CompanyCreate.new(
   country_alpha2: ::Easyship::Shared::CountryAlpha2::KP,
-  name: "string",
+  name: "<value>",
   organization_id: "7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
   owner: ::Easyship::Shared::CompanyUserCreate.new(
-    email: "string",
+    email: "<value>",
     first_name: "Destiny",
     last_name: "Turcotte",
   ),
@@ -84,7 +84,7 @@ s.config_security(
 )
 
     
-res = s.companies.list(company_name="string", easyship_company_id="string", organization_id="c184a429-302e-4aca-80db-f1718b882a50", owner_email="string", sort_by=::Easyship::Operations::SortBy::CREATED_AT, sort_direction=::Easyship::Operations::SortDirection::ASC)
+res = s.companies.list(company_name="<value>", easyship_company_id="<value>", organization_id="c184a429-302e-4aca-80db-f1718b882a50", owner_email="<value>", sort_by=::Easyship::Operations::SortBy::CREATED_AT, sort_direction=::Easyship::Operations::SortDirection::ASC)
 
 if ! res.company_list.nil?
   # handle response

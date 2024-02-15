@@ -69,10 +69,10 @@ s.config_security(
 
 
 req = ::Easyship::Shared::OAuth2ClientCredentialsRequest.new(
-  client_id: "string",
-  client_secret: "string",
+  client_id: "<value>",
+  client_secret: "<value>",
   grant_type: ::Easyship::Shared::OAuth2ClientCredentialsRequestGrantType::CLIENT_CREDENTIALS,
-  scope: "string",
+  scope: "<value>",
 )
     
 res = s.auth.retrieve(req)
@@ -148,10 +148,10 @@ s.config_security(
 
 
 req = ::Easyship::Shared::OAuth2TokenRevokeRequest.new(
-  client_id: "string",
-  client_secret: "string",
+  client_id: "<value>",
+  client_secret: "<value>",
   grant_type: ::Easyship::Shared::GrantType::CLIENT_CREDENTIALS,
-  token: "string",
+  token: "<value>",
 )
     
 res = s.auth.revoke(req)

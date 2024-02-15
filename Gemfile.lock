@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easyship_ruby_sdk (5.0.1)
+    easyship_ruby_sdk (5.0.2)
       faraday
       faraday-multipart
       rack

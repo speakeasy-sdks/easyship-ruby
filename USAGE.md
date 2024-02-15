@@ -13,10 +13,10 @@ s.config_security(
 
 req = ::Easyship::Shared::CompanyCreate.new(
   country_alpha2: ::Easyship::Shared::CountryAlpha2::KP,
-  name: "string",
+  name: "<value>",
   organization_id: "7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
   owner: ::Easyship::Shared::CompanyUserCreate.new(
-    email: "string",
+    email: "<value>",
     first_name: "Destiny",
     last_name: "Turcotte",
   ),

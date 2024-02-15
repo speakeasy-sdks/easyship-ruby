@@ -36,7 +36,7 @@ s.config_security(
 
 
 req = ::Easyship::Shared::OrganizationCreate.new(
-  name: "string",
+  name: "<value>",
 )
     
 res = s.organizations.create(req)
@@ -205,7 +205,7 @@ s.config_security(
 )
 
     
-res = s.organizations.list_companies(organization_id="15e2991c-1b2d-485f-b605-3846667071b8", company_name="string", easyship_company_id="string", owner_email="string", sort_by=::Easyship::Operations::QueryParamSortBy::COMPANY_NAME, sort_direction=::Easyship::Operations::QueryParamSortDirection::DESC)
+res = s.organizations.list_companies(organization_id="15e2991c-1b2d-485f-b605-3846667071b8", company_name="<value>", easyship_company_id="<value>", owner_email="<value>", sort_by=::Easyship::Operations::QueryParamSortBy::COMPANY_NAME, sort_direction=::Easyship::Operations::QueryParamSortDirection::DESC)
 
 if ! res.company_list.nil?
   # handle response
