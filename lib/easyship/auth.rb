@@ -19,7 +19,7 @@ module Easyship
     end
 
 
-    sig { params(request: T.nilable(::Easyship::Shared::OAuth2IntrospectRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::Easyship::Shared::OAuth2IntrospectRequest)).returns(::Easyship::Operations::IntrospectTokenResponse) }
     def introspect(request)
       # introspect - Introspect an Access Token
       # Introspect an OAuth 2 Access Token using another Access Token.
@@ -60,7 +60,7 @@ module Easyship
     end
 
 
-    sig { params(request: T.nilable(::Easyship::Shared::OAuth2ClientCredentialsRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::Easyship::Shared::OAuth2ClientCredentialsRequest)).returns(::Easyship::Operations::RetrieveTokenResponse) }
     def retrieve(request)
       # retrieve - Retrieve an Access Token
       # Retrieve an OAuth 2 Access Token.
@@ -101,7 +101,7 @@ module Easyship
     end
 
 
-    sig { returns(::Easyship::Utils::FieldAugmented) }
+    sig { returns(::Easyship::Operations::RetrieveInfoResponse) }
     def retrieve_info
       # retrieve_info - Retrieve info for the Access Token
       # Retrieve an OAuth 2 Access Token information.
@@ -133,7 +133,7 @@ module Easyship
     end
 
 
-    sig { params(request: T.nilable(::Easyship::Shared::OAuth2TokenRevokeRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::Easyship::Shared::OAuth2TokenRevokeRequest)).returns(::Easyship::Operations::RevokeTokenResponse) }
     def revoke(request)
       # revoke - Revoke an Access Token
       # Introspect an OAuth 2 Access Token using another Access Token.

@@ -36,9 +36,9 @@ module Easyship
       @server_idx = server_idx.nil? ? 0 : server_idx
       @language = 'ruby'
       @openapi_doc_version = '2023-09'
-      @sdk_version = '5.0.3'
-      @gen_version = '2.262.2'
-      @user_agent = 'speakeasy-sdk/ruby 5.0.3 2.262.2 2023-09 easyship_ruby_sdk'
+      @sdk_version = '5.0.4'
+      @gen_version = '2.263.3'
+      @user_agent = 'speakeasy-sdk/ruby 5.0.4 2.263.3 2023-09 easyship_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

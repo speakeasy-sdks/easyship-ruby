@@ -3,6 +3,7 @@
 # typed: true
 # frozen_string_literal: true
 
+require_relative 'easyship/utils/t'
 require_relative 'easyship/utils/utils'
 require_relative 'easyship/utils/metadata_fields'
 module Easyship

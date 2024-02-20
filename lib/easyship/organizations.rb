@@ -19,7 +19,7 @@ module Easyship
     end
 
 
-    sig { params(request: T.nilable(::Easyship::Shared::OrganizationCreate)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::Easyship::Shared::OrganizationCreate)).returns(::Easyship::Operations::CreateOrganizationsResponse) }
     def create(request)
       # create - Create an Organization
       # Create a new organization (group of your child companies) in your group.
@@ -62,7 +62,7 @@ module Easyship
     end
 
 
-    sig { params(organization_id: ::String).returns(Utils::FieldAugmented) }
+    sig { params(organization_id: ::String).returns(::Easyship::Operations::DeleteOrganizationsResponse) }
     def delete(organization_id)
       # delete - Delete an organization
       # Delete an organization (group of child companies) from your group.
@@ -111,7 +111,7 @@ module Easyship
     end
 
 
-    sig { params(organization_id: ::String).returns(Utils::FieldAugmented) }
+    sig { params(organization_id: ::String).returns(::Easyship::Operations::GetOrganizationsResponse) }
     def get(organization_id)
       # get - Get an Organization
       # Retrieve details of a specific organization (group of child companies) in your group.
@@ -154,7 +154,7 @@ module Easyship
     end
 
 
-    sig { params(page: T.nilable(::Integer), per_page: T.nilable(::Integer)).returns(Utils::FieldAugmented) }
+    sig { params(page: T.nilable(::Integer), per_page: T.nilable(::Integer)).returns(::Easyship::Operations::ListOrganizationsResponse) }
     def list_all(page = nil, per_page = nil)
       # list_all - List all Organizations
       # Retrieve a list of organizations (groups of child companies) that are a part of your group.
@@ -195,7 +195,7 @@ module Easyship
     end
 
 
-    sig { params(organization_id: ::String, company_name: T.nilable(::String), easyship_company_id: T.nilable(::String), owner_email: T.nilable(::String), sort_by: T.nilable(::Easyship::Operations::QueryParamSortBy), sort_direction: T.nilable(::Easyship::Operations::QueryParamSortDirection)).returns(Utils::FieldAugmented) }
+    sig { params(organization_id: ::String, company_name: T.nilable(::String), easyship_company_id: T.nilable(::String), owner_email: T.nilable(::String), sort_by: T.nilable(::Easyship::Operations::QueryParamSortBy), sort_direction: T.nilable(::Easyship::Operations::QueryParamSortDirection)).returns(::Easyship::Operations::ListOrganizationCompaniesResponse) }
     def list_companies(organization_id, company_name = nil, easyship_company_id = nil, owner_email = nil, sort_by = nil, sort_direction = nil)
       # list_companies - List all Companies of the Organization
       # Retrieve a list of companies from a specific organization.
@@ -245,7 +245,7 @@ module Easyship
     end
 
 
-    sig { params(organization_id: ::String, organization_update: T.nilable(::Easyship::Shared::OrganizationUpdate)).returns(Utils::FieldAugmented) }
+    sig { params(organization_id: ::String, organization_update: T.nilable(::Easyship::Shared::OrganizationUpdate)).returns(::Easyship::Operations::UpdateOrganizationsResponse) }
     def update(organization_id, organization_update = nil)
       # update - Update an Organization
       # Update a specific organization (group of child companies).

@@ -19,7 +19,7 @@ module Easyship
     end
 
 
-    sig { params(request: T.nilable(::Easyship::Shared::CompanyCreate)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::Easyship::Shared::CompanyCreate)).returns(::Easyship::Operations::CreateCompaniesResponse) }
     def create(request)
       # create - Create a Company
       # Create a new company in specific organization.
@@ -67,7 +67,7 @@ module Easyship
     end
 
 
-    sig { params(company_name: T.nilable(::String), easyship_company_id: T.nilable(::String), organization_id: T.nilable(::String), owner_email: T.nilable(::String), sort_by: T.nilable(::Easyship::Operations::SortBy), sort_direction: T.nilable(::Easyship::Operations::SortDirection)).returns(Utils::FieldAugmented) }
+    sig { params(company_name: T.nilable(::String), easyship_company_id: T.nilable(::String), organization_id: T.nilable(::String), owner_email: T.nilable(::String), sort_by: T.nilable(::Easyship::Operations::SortBy), sort_direction: T.nilable(::Easyship::Operations::SortDirection)).returns(::Easyship::Operations::ListCompaniesResponse) }
     def list(company_name = nil, easyship_company_id = nil, organization_id = nil, owner_email = nil, sort_by = nil, sort_direction = nil)
       # list - List all Companies
       # List all companies which belong to organisation.
@@ -112,7 +112,7 @@ module Easyship
     end
 
 
-    sig { params(easyship_company_id: ::String, company_update: T.nilable(::Easyship::Shared::CompanyUpdate)).returns(Utils::FieldAugmented) }
+    sig { params(easyship_company_id: ::String, company_update: T.nilable(::Easyship::Shared::CompanyUpdate)).returns(::Easyship::Operations::UpdateCompaniesResponse) }
     def update(easyship_company_id, company_update = nil)
       # update - Update a Company
       # Update a company.
