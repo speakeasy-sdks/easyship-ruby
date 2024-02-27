@@ -27,25 +27,26 @@ module Easyship
     field :sdk_version, String
     field :gen_version, String
     field :user_agent, String
-  
-    
+
+
     sig { params(client: Faraday::Connection, security: T.nilable(Shared::Security), server_url: T.nilable(String), server_idx: T.nilable(Integer)).void }
     def initialize(client, security, server_url, server_idx)
       @client = client
       @server_url = server_url
       @server_idx = server_idx.nil? ? 0 : server_idx
+      @security = security
       @language = 'ruby'
       @openapi_doc_version = '2023-09'
-      @sdk_version = '5.0.4'
-      @gen_version = '2.263.3'
-      @user_agent = 'speakeasy-sdk/ruby 5.0.4 2.263.3 2023-09 easyship_ruby_sdk'
+      @sdk_version = '5.0.5'
+      @gen_version = '2.272.7'
+      @user_agent = 'speakeasy-sdk/ruby 5.0.5 2.272.7 2023-09 easyship_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
     def get_server_details
       return [@server_url.delete_suffix('/'), {}] if !@server_url.nil?
       @server_idx = 0 if @server_idx.nil?
-          
+
 
       [SERVERS[@server_idx], {}]
     end
