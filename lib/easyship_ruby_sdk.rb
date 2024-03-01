@@ -3,15 +3,16 @@
 # typed: true
 # frozen_string_literal: true
 
-require_relative 'easyship/utils/t'
-require_relative 'easyship/utils/utils'
-require_relative 'easyship/utils/metadata_fields'
 module Easyship
   autoload :Api, 'easyship/api'
-  autoload :SDKConfiguration, 'easyship/sdkconfiguration'
   autoload :Shared, 'easyship/models/shared'
   autoload :Operations, 'easyship/models/operations'
   autoload :Companies, 'easyship/companies'
   autoload :Organizations, 'easyship/organizations'
   autoload :Auth, 'easyship/auth'
 end
+
+require_relative 'easyship/utils/t'
+require_relative 'easyship/utils/utils'
+require_relative 'easyship/utils/metadata_fields'
+require_relative 'easyship/sdkconfiguration'
