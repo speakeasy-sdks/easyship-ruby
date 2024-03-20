@@ -1,29 +1,32 @@
-<!-- Start SDK Example Usage -->
-
-
+<!-- Start SDK Example Usage [usage] -->
 ```ruby
-require_relative easyship_ruby_sdk
+require 'easyship_ruby_sdk'
 
 
-s = Easyship::Api.new
+s = ::Easyship::Api.new
 s.config_security(
-  security=Shared::Security.new(
-    o_auth2="",
+  ::Easyship::Shared::Security.new(
+    o_auth2: "Bearer <YOUR_ACCESS_TOKEN_HERE>",
   )
 )
 
-   
-req = Shared::OAuth2IntrospectRequest.new(
-  request=Shared::OAuth2IntrospectRequest.new(
-    token="string",
+
+req = ::Easyship::Shared::CompanyCreate.new(
+  country_alpha2: ::Easyship::Shared::CountryAlpha2::KP,
+  name: "<value>",
+  organization_id: "7ad642c1-fc6f-4e07-a41b-cdd89dc7fa50",
+  owner: ::Easyship::Shared::CompanyUserCreate.new(
+    email: "<value>",
+    first_name: "Destiny",
+    last_name: "Turcotte",
   ),
 )
     
-res = s.auth.introspect(req)
+res = s.companies.create(req)
 
-if ! res.o_auth2_introspect_response.nil?
+if ! res.company_single.nil?
   # handle response
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
