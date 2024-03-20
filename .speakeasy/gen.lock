@@ -3,10 +3,10 @@ id: b83e1457-0e6c-47fc-b29c-e713af717d9f
 management:
   docChecksum: 90d1f43fa206fae754e42dd847dc80e4
   docVersion: 2023-09
-  speakeasyVersion: internal
-  generationVersion: 2.275.4
-  releaseVersion: 5.0.6
-  configChecksum: 2887f0c07b366f0a078c44131861ffff
+  speakeasyVersion: 1.213.0
+  generationVersion: 2.283.1
+  releaseVersion: 5.0.7
+  configChecksum: 5e108a4109045ca379946cd456c21254
   repoURL: https://github.com/speakeasy-sdks/easyship-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/easyship-ruby
@@ -14,7 +14,7 @@ features:
   ruby:
     core: 3.2.11
     flattening: 2.81.1
-    globalSecurity: 2.81.5
+    globalSecurity: 2.81.6
     globalServerURLs: 2.82.3
     groups: 2.81.2
     nameOverrides: 2.81.1

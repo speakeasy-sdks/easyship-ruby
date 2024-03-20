@@ -38,9 +38,9 @@ module Easyship
       @security = security
       @language = 'ruby'
       @openapi_doc_version = '2023-09'
-      @sdk_version = '5.0.6'
-      @gen_version = '2.275.4'
-      @user_agent = 'speakeasy-sdk/ruby 5.0.6 2.275.4 2023-09 easyship_ruby_sdk'
+      @sdk_version = '5.0.7'
+      @gen_version = '2.283.1'
+      @user_agent = 'speakeasy-sdk/ruby 5.0.7 2.283.1 2023-09 easyship_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
